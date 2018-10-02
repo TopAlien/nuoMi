@@ -12,8 +12,6 @@ import Scan from '@/routes/mine/children/Scan'
 import Info from '@/routes/mine/children/Info'
 import Setting from '@/routes/mine/children/Setting'
 import Account from '@/routes/mine/children/children/Account'
-
-import Home from '@/routes/sport/tabContent/Home'
 Vue.use(Router)
 
 const routes = [
@@ -22,13 +20,7 @@ const routes = [
     {
       path:'/sport',
       name: 'sport',
-      component: Sport,
-      children:[
-        {
-          path:'home',
-          component: Home
-        }
-      ]
+      component: Sport
     },
     {
       path: '/discover',

@@ -8,7 +8,6 @@ Vue.use(Vuex)
 
 const state = {
   isAuthenticated: false, //是否授权--登录状态
-  
   user:{} //用户信息
 }
 

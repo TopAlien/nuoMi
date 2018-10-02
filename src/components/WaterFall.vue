@@ -38,10 +38,16 @@
 				required: true
 			}
     },
-    methods:{
-      //计算
-      calculate(){
-        //计算出一行可放几张图片
+    mounted(){
+      //  window.addEventListener('load',()=>{
+      //     this.calculate()
+      //  })
+      //刷新后状态不保留 ----  vuex。。
+      //启用了缓存 keep-alive 所以不会再次计算了
+      // this.$nextTick(()=>{
+      //     //计算出一行可放几张图片
+      // });
+      setTimeout(()=>{
         const currentWidth = document.documentElement.clientWidth*92/100; //承载容器宽度
         const oImgNum = this.$refs.waterFall.children;
         const oImgLen = this.$refs.waterFall.children.length; //图片个数
@@ -58,26 +64,13 @@
               var minHeightIndex = boxImgArr.findIndex((boxImgArr)=>(boxImgArr == minHeight));
               oImgNum[i].style.position = 'absolute';
               oImgNum[i].style.top = minHeight + 15+'px'; //margin-top 10px
-             // console.log(oImgNum[minHeightIndex].offsetLeft);
               oImgNum[i].style.left = oImgNum[minHeightIndex].offsetLeft + 'px'; /* 获取最小位置的距左的距离 */
-              // this.top = minHeight + 'px';
-              // this.left = oImgNum[minHeightIndex].offsetLeft + 'px'; /* 获取最小位置的距左的距离 */
               boxImgArr[minHeightIndex] = boxImgArr[minHeightIndex] + oImgNum[i].offsetHeight + 15;
           }  
         }
         // 因为设置了 absolute  所以高度无法撑开 用 js实现
         this.$refs.waterFall.style.height = document.documentElement.scrollHeight - 150 +'px';
-      }
-    },
-    created(){
-      //刷新后状态不保留 ----  vuex。。
-      //启用了缓存 keep-alive 所以不会再次计算了
-      this.$nextTick(()=>{
-        this.calculate()
-       });
-      window.addEventListener('load',()=>{
-        this.calculate()
-      })   
+      },16)
     }
   }
 </script>
