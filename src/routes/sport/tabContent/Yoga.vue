@@ -94,6 +94,7 @@
           },
           {
             id: 2,
+            title:'长里程跑后拉伸',
             title:'更多跑步训练',
             num:'热身拉伸 / 损伤预防 / 跑步水平提升 / ...',
             url:'../../static/image/547dc44b51400000.jpg'
@@ -109,18 +110,21 @@
           },
           {
             id: 1,
+            title:'瑜伽新手专区',
             describe:'瑜伽正在毁掉 2000w 中国人的身体？',
             describeSm:'这种谣言你可别信',
             url:'../../static/image/1534315399305_1776x1332.jpg'
           },
           {
             id: 2,
+            title:'瑜伽新手专区',
             describe:'新手 | 瑜伽入门计划',
             describeSm:'7天 手把手带你瑜伽入门',
             url:'../../static/image/1507801670626_750x700.jpg'
           },
           {
             id: 3,
+            title:'瑜伽新手专区',
             describe:'瑜伽快速入门攻略',
             describeSm:'瑜伽新手必看',
             url:'../../static/image/1507799644728_750x700 .jpg'
@@ -136,24 +140,28 @@
           },
           {
             id: 5,
+            title:'瑜伽课程推荐',
             describe:'「 魅力提升 」',
             describeSm:'瑜伽帮你塑造男性魅力',
             url:'../../static/image/1488452269169_750x700.jpg'
           },
           {
             id: 6,
+            title:'瑜伽课程推荐',
             describe:'「 减脂塑形瑜伽 」',
             describeSm:'瑜伽帮你完美体型',
             url:'../../static/image/1507801670626_750x700.jpg'
           },
           {
             id: 7,
+            title:'瑜伽课程推荐',
             describe:'「 放松解压 」',
             describeSm:'瑜伽帮你释放身心',
             url:'../../static/image/1507801670626_750x700.jpg'
           },
           {
             id: 9,
+            title:'瑜伽课程推荐',
             describe:'「 备孕解压 」',
             describeSm:'滋养孕育空间与能量',
             url:'../../static/image/1517364960595_315x315.jpg'
@@ -169,6 +177,7 @@
           },
           {
             id: 1,
+            title:'每周瑜伽达人 - 周三更新',
             describe:'十一年瑜伽,老妈练出了模特身材',
             describeSm:'雪君33: 1560次的坚持和执着,平凡也会变...',
             url:'../../static/image/1519635853592_315x315.jpg'
@@ -184,18 +193,21 @@
           },
           {
             id: 1,
+            title:'瑜伽活动',
             describe:'快速免费领取 nuoMi 瑜伽垫',
             describeSm:'十一特别活动 | 7天闭关挑战',
             url:'../../static/image/1533804989203_600x338.jpg'
           },
           {
             id: 2,
+            title:'瑜伽活动',
             describe:'7 天放松减压训练营',
             describeSm:'粉碎压力 释放身心',
             url:'../../static/image/1507801857816_750x700.jpg'
           },
           {
             id: 3,
+            title:'瑜伽活动',
             describe:'每日瑜伽签到',
             describeSm:'分享每一次瑜伽',
             url:'../../static/image/1507800851171_750x700.jpg'

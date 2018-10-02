@@ -35,20 +35,22 @@
       return{
         choicenes:[
           {
-            title: '为你精选',
             id: 0,
+            title: '为你精选',
             describe:'中秋骑车得好礼',
             describeSm:'nuoMi 商场装备任你挑',
             url:'../../static/image/u=2912732009,2136481222&fm=26&gp=0.jpg'
           },
            {
             id: 1,
+            title: '为你精选',
             describe:'中秋骑迹向团圆',
             describeSm:'中秋有奖骑行活动',
             url:'../../static/image/u=2799702000,2050941478&fm=26&gp=0.jpg'
           },
            {
             id: 2,
+            title: '为你精选',
             describe:'圆',
             describeSm:'中秋有奖骑行活动',
             url:'../../static/image/u=1297405399,221632527&fm=200&gp=0.jpg'
@@ -64,18 +66,21 @@
           },
            {
             id: 1,
+            title: '骑手日记',
             describe:'33漫骑',
             describeSm:'和男票一起幸福地骑行是一种怎样的体验？',
             url:'../../static/image/u=1734781753,909490416&fm=200&gp=0.jpg'
           },
           {
             id: 2,
+            title: '骑手日记',
             describe:'世界那么大,骑行去流浪',
             describeSm:'nuoMi 骑士的青海环湖骑行记',
             url:'../../static/image/u=1297405399,221632527&fm=200&gp=0.jpg'
           },
           {
             id: 3,
+            title: '骑手日记',
             describe:'又见最美四月',
             describeSm:'粉壁上桑园小镇骑游',
             url:'../../static/image/u=1356031719,1901324463&fm=200&gp=0.jpg'

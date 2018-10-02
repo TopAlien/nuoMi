@@ -39,12 +39,14 @@
           },
            {
             id: 2,
+            title: '行走课程',
             describe:'活力燃脂走',
             describeSm:'走起来就能瘦',
             url:'../../static/image/1507861239722_750x700.jpg'
           },
            {
             id: 3,
+            title: '行走课程',
             describe:'极速燃脂走',
             describeSm:'走出 A4 腰',
             url:'../../static/image/1478591073270_750x700.jpg'

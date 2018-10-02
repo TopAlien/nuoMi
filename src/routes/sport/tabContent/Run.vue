@@ -71,12 +71,14 @@
           },
           {
             id: 1,
+            title: '为你推荐',
             describe: '国庆最酷活动,你准备好了吗？',
             describeSm: '和全球 nuoMi 一起狂欢吧',
             url:'../../static/image/banner2.jpg'
           },
           {
             id: 2,
+            title: '为你推荐',
             describe: '秋季跑步秘籍,更多奖更好玩',
             describeSm: '城市跑步系列活动全面启动',
             url:'../../static/image/banner1.jpg'
@@ -92,6 +94,7 @@
           },
           {
             id: 1,
+            title: '跑步活动',
             describe: '国庆节前计划准备',
             describeSm: '活动结束时间 2018/10/01 23:59',
             url:'../../static/image/1478588178229_750x700.jpg'
@@ -104,6 +107,7 @@
           },
           {
             id: 3,
+            title: '跑步活动',
             describe: '计划准备',
             describeSm: '活动结束时间 2018/10/01 23:59',
             url:'../../static/image/1518432578328_750x700.jpg'
@@ -119,6 +123,7 @@
           },
           {
             id: 1,
+            title: '徽章收集控',
             describe: '走遍中国,你就是当代徐霞客',
             describeSm: '用运动轨迹点亮你的省份,收集 34 个省份...',
             url:'../../static/image/1495521473548_750x700.jpg'

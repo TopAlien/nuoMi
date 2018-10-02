@@ -2,20 +2,20 @@
   <div class="topBar">
     <div class="topBar_title">{{ options.title }}</div>
     <div class="icons">
-      <router-link to='search'>
-        <i v-if='options.search' :class="searchIcon"/>
+      <router-link to='search' v-if='options.search'>
+        <i  :class="searchIcon"/>
       </router-link>
-      <router-link to='camera'>
-        <i v-if='options.camera' :class="cameraIcon"/>
+      <router-link to='camera' v-if='options.camera'>
+        <i  :class="cameraIcon"/>
       </router-link>
-      <router-link to='scan'>
-        <i v-if='options.scan' :class="scanIcon"/>
+      <router-link to='scan' v-if='options.scan'>
+        <i  :class="scanIcon"/>
       </router-link>
-      <router-link to='info'>
-        <i v-if='options.info' :class="infoIcon" />
+      <router-link to='info' v-if='options.info'>
+        <i  :class="infoIcon" />
       </router-link>
-      <router-link to='setting'>
-        <i v-if='options.setting' :class="settingIcon" />
+      <router-link to='setting' v-if='options.setting'>
+        <i  :class="settingIcon" />
       </router-link>
     </div>
   </div>
