@@ -275,7 +275,7 @@
           {
             id: 0,
             title:'「 一周最热 」这种食物吃多了 , 竟然会加速衰老！',
-            url:'../../../static/banner4.jpg',
+            url:'../../../static/image/1516952026427_750x700.jpg',
             text:'这些网红病 , 都是血糖惹得祸',
             btnName:'文章',
             readNum:200,
@@ -288,7 +288,7 @@
           {
             id: 0,
             title:'8 个健身原则,增肌新手也能快速练出效果',
-            url:'../../../static/banner1.jpg',
+            url:'../../../static/image/1507861239722_750x700.jpg',
             text:'健身的人越来越多,却不是每个人都练出效果',
             btnName:'文章',
             readNum:200,
@@ -301,7 +301,7 @@
           {
             id: 0,
             title:'听说走路就可以瘦 ？你不来试试吗？',
-            url:'../../../static/banner2.jpg',
+            url:'../../../static/image/qweqweqweasd.jpg',
             text:'报名时间: 09.26 00:00 - 10.08 00:00',
             btnName:'活动',
             readNum:999,
@@ -314,7 +314,7 @@
           {
             id: 0,
             title:'新款高度运动内衣',
-            url:'../../../static/banner3.jpg',
+            url:'../../../static/image/a600af7324c3beba779be4ccb4ae7d050318dbfc.jpg',
             text:'这些网红病 , 都是血糖惹得祸',
             btnName:'装备',
             readNum:2000,

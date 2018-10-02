@@ -11,7 +11,9 @@ import Camera from '@/routes/community/children/Camera'
 import Scan from '@/routes/mine/children/Scan'
 import Info from '@/routes/mine/children/Info'
 import Setting from '@/routes/mine/children/Setting'
+import Personal from '@/routes/mine/children/children/Personal'
 import Account from '@/routes/mine/children/children/Account'
+
 Vue.use(Router)
 
 const routes = [
@@ -76,7 +78,12 @@ const routes = [
       component: Setting
     },
     {
-      path: '/setting/account',
+      path: '/personal',
+      name:'personal',
+      component: Personal
+    },
+    {
+      path: '/account',
       name: 'account',
       component: Account
     }

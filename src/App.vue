@@ -27,10 +27,14 @@
       </li>
     </ul>
     <div class="wrapper" v-if='showBottomTab'>
-      <router-view />
+      <keep-alive>
+        <router-view />
+      </keep-alive>
     </div>
     <div v-else>   
-      <router-view />    
+      <keep-alive>
+        <router-view /> 
+      </keep-alive>   
     </div>
   </div>
 </template>
@@ -67,6 +71,7 @@ export default {
           this.$router.push('/login');
        }else{
           //未过期
+          //Authorization
           this.$store.dispatch("setIsAuthenticated", !this.isEmpty(decode)); //state true false
           this.$store.dispatch("setUser", decode); //存储信息·
        } 

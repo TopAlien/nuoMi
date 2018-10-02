@@ -1,9 +1,9 @@
 <template>
   <div class="mine">
-    <TopBar :options='optionsHead' @onScan='scan' @onInfo='info' @onSetting='setting'/>
+    <TopBar :options='optionsHead'/>
     <div class="mine_wrap">
       <div class="mine_wrap-user">
-        <img src="../../assets/images/action1.jpg" :style='{ width:"70px", height:"70px", borderRadius:"50%" }'>
+        <img :src="'http://localhost:3000/images/'+user.avatar" :style='{ width:"70px", height:"70px", borderRadius:"50%" }'>
         <div class="mine_wrap-user-info">
           <p class="mine_wrap-user-info-user">{{ user.name }}</p>
           <p class="mine_wrap-user-info-btn">成为 nuoMi 会员</p>
@@ -31,7 +31,7 @@
         </div>
         <div class="mine_wrap-total-item">
           <p class="mine_wrap-total-item-title">本周排名 <i>第 - 名</i></p>
-          <img src="../../assets/images/action1.jpg" :style='{ width:"30px", height:"30px"}'>
+          <img :src="'http://localhost:3000/images/'+user.avatar" :style='{ width:"30px", height:"30px"}'>
         </div>
       </div>
       <!-- 今日运动滑动 -->
@@ -62,20 +62,13 @@
       </div>
       <!-- lineLink -->
       <div class="mine_wrap-list">
-        <LineLink :options="scoure"/>
-        <LineLink :options="activity"/>
-        <LineLink :options="nuoMiPland"/>
+        <LineLink v-for='item in mineData.slice(0,3)' :key='item.title' :options='item'/>
       </div>
       <div class="mine_wrap-list">
-        <LineLink :options="collect"/>
-        <LineLink :options="badge"/>
-        <LineLink :options="equipment"/>
+        <LineLink v-for='item in mineData.slice(3,6)' :key='item.title' :options='item'/>
       </div>
       <div class="mine_wrap-list">
-        <LineLink :options="wallet"/>
-        <LineLink :options="order"/>
-        <LineLink :options="shopCart"/>
-        <LineLink :options="service"/>
+       <LineLink v-for='item in mineData.slice(6)' :key='item.title' :options='item'/>
       </div>
     </div>
   </div>
@@ -92,70 +85,57 @@
     },
     data () {
       return {
-        user:{},
-        // topBar -options
+        user:{}, //用户信息
         optionsHead:{
           title:'我',
-          scan:'scan',
+          scan:'scan', //路径组件内置了
           info: 'info',
           setting:'setting'
         },
-
         //lineLink start
-        scoure:{
-          title:'我的课程',
-           url: 'discover'
-        },
-        activity:{
-          title: '我的活动',
-           url: 'discover'
-        },
-        nuoMiPland:{
-          title: 'nuoMiPland',
-           url: 'discover'
-        },
-        collect: {
-          title: '我的收藏',
-           url: 'discover'
-        },
-        badge: {
-          title: '我的徽章',
-           url: 'discover',
-          number: '0'
-        },
-        equipment:{
-          title: '应用与设备',
-           url: 'discover'
-        },
-        wallet: {
-          title:'我的钱包',
-           url: 'discover'
-        },
-        order: {
-          title:'我的订单',
-           url: 'discover'
-        },
-        shopCart: {
-          title:'购物车',
-           url: 'discover'
-        },
-        service: {
-          title:'免流量服务',
-           url: 'discover'
-        },
-        // lineLink END
-        msg: 'Welc'
-      }
-    },
-    methods:{
-      scan(){
-        alert('scan')
-      },
-      info(){
-        alert('info')
-      },
-      setting(){
-        alert('setting')
+        mineData :[
+          {
+            title:'我的课程',
+            url: 'discover'
+          },
+          {
+            title: '我的活动',
+            url: 'discover'
+          },
+          {
+            title: 'nuoMiPland',
+            url: 'discover'
+          },
+          {
+            title: '我的收藏',
+            url: 'discover'
+          },
+          {
+            title: '我的徽章',
+            url: 'discover',
+            number: '0'
+          },
+          {
+            title: '应用与设备',
+            url: 'discover'
+          },
+          {
+            title:'我的钱包',
+            url: 'discover'
+          },
+          {
+            title:'我的订单',
+            url: 'discover'
+          },
+          {
+            title:'购物车',
+            url: 'discover'
+          },
+          {
+            title:'免流量服务',
+            url: 'discover'
+          }
+        ]
       }
     },
     created(){
