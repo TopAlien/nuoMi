@@ -1,8 +1,8 @@
 <template>
   <div class="run">
-    <Basket>
-      还有东西，地图
-    </Basket>
+    <div class="run_map">
+     <BMap></BMap>
+    </div>
     <BroadCast :arrInfo="recommend"/>
     <!-- 跑步辅助 -->
     <Basket :title='title' class="run_train" >
@@ -25,12 +25,14 @@
 </template>
 
 <script>
+  import BMap from '@/components/BMap'
   import Basket from '@/components/Basket'
   import BroadCast from '@/components/BroadCast'
   import NoContent from '@/components/NoContent'
   export default{
     name: 'run',
     components:{
+      BMap,
       Basket,
       BroadCast,
       NoContent
@@ -38,6 +40,12 @@
     data(){
       return{
         title:'跑步辅助训练', // 文本头标题
+        //地图 北京
+        center: {
+          lng: 116.404, 
+          lat: 39.915
+        },
+        zoom: 12,
         // 跑步辅助
         runaid:[
           {
@@ -130,12 +138,33 @@
           }
         ]
       }
+    },
+    methods:{
+      handelMap({BMap,map}){
+        var geolocation = new BMap.Geolocation();
+        geolocation.getCurrentPosition(function(r){
+          if(this.getStatus() == BMAP_STATUS_SUCCESS){
+            var mk = new BMap.Marker(r.point);
+            map.addOverlay(mk);
+            map.panTo(r.point);
+          }
+          else {
+            alert('failed'+this.getStatus());
+          }        
+        });
+      }
     }
   }
 </script>
 
 <style lang="stylus">
 .run
+  &_map
+    width 100%
+    height 200px
+    &-map
+      width 100%
+      height 200px
   &_train
     &-item
       position relative

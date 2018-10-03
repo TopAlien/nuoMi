@@ -341,7 +341,7 @@
     border-radius 4px
     background-color #fff
   &_carouse
-    width 375px
+    width 100%
     height 160px
   &_icons
     height 80px

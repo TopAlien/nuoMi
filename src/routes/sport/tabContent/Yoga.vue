@@ -127,7 +127,7 @@
             title:'瑜伽新手专区',
             describe:'瑜伽快速入门攻略',
             describeSm:'瑜伽新手必看',
-            url:'../../static/image/1507799644728_750x700 .jpg'
+            url:'../../static/image/1507802632406_750x700.jpg'
           }
         ],
         recommend:[

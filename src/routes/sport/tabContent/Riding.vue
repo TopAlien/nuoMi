@@ -5,9 +5,9 @@
         <span class="riding_first-title">" 感受追风的快乐 "</span>
       </div>
     </Basket>
-    <Basket>
-      骑行地图
-    </Basket>
+    <div class="riding_map">
+      <BMap></BMap>
+    </div>
     <!-- 精选 -->
     <BroadCast :arrInfo='choicenes' />
     <Basket>
@@ -23,16 +23,18 @@
   import Basket from '@/components/Basket'
   import BroadCast from '@/components/BroadCast'
   import NoContent from '@/components/NoContent'
-
+  import BMap from '@/components/BMap'
   export default{
     name: 'riding',
     components:{
+      BMap,
       Basket,
       BroadCast,
       NoContent
     },
     data(){
       return{
+        //地图 北京
         choicenes:[
           {
             id: 0,
@@ -93,6 +95,12 @@
 
 <style lang="stylus">
 .riding
+  &_map
+    width 100%
+    height 200px
+    &-map
+      width 100%
+      height 200px
   &_first
     width 100%
     height 150px

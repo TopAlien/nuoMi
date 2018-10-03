@@ -5,9 +5,9 @@
         <span class="walk_first-title">" 用步伐丈量世界 "</span>
       </div>
     </Basket>
-    <Basket>
-      行走地图 行走地图 行走地图 行走地图
-    </Basket>
+    <div class="walk_map">
+      <BMap></BMap>
+    </div>
     <BroadCast :arrInfo='scoure' />
     <Basket>
       行走活动 行走活动 行走活动 行走活动 
@@ -20,10 +20,12 @@
   import Basket from '@/components/Basket'
   import BroadCast from '@/components/BroadCast'
   import NoContent from '@/components/NoContent'
+  import BMap from '@/components/BMap'
   export default{
     name: 'walk',
     components:{
       Basket,
+      BMap,
       BroadCast,
       NoContent
     },
@@ -53,11 +55,29 @@
           }
         ]
       }
+    },
+    methods:{
+      handelMap({BMap,map}){
+        var geolocation = new BMap.Geolocation();
+        geolocation.getCurrentPosition(function(r){
+          if(this.getStatus() == BMAP_STATUS_SUCCESS){
+            var mk = new BMap.Marker(r.point);
+            map.addOverlay(mk);
+            map.panTo(r.point);
+          }
+          else {
+            alert('failed'+this.getStatus());
+          }        
+        });
+      }
     }
   }
 </script>
 <style lang="stylus">
 .walk
+  &_map
+    width 100%
+    height 200px
   &_first
     width 100%
     height 150px
