@@ -62,12 +62,16 @@
 
 <style lang='stylus'>
   .topBar
+    position fixed
+    top 0
+    left 0
     display flex
     width 100%
     height 50px
     justify-content space-between
     align-items center
     background-color #fff
+    z-index 999
     &_title
       margin-left 15px
     .icons

@@ -83,9 +83,6 @@ export default {
     currentTabCompnent(){
       return this.currentTab
     }
-  },
-  created(){
-    
   }
 }
 </script >

@@ -8,7 +8,10 @@
     <Basket class="tab_home-now">
       <div class='tab_home-now-item'>
         <div class="tab_home-now-item-total">
-          <span>在 nuoMi 已累计运动 ></span>
+          <router-link to='myData'>
+            <span>在 nuoMi 已累计运动 </span>
+            <i class="tab_home-now-item-total-icon"/>
+          </router-link>
         </div>
         <div class="tab_home-now-item-sport">
           <span class="tab_home-now-item-sport-title">0</span>分钟
@@ -31,15 +34,9 @@
         <span class="tab_home-course-list-title">瑜伽 · 脊柱柔韧</span>
         <span class="tab_home-course-list-time">21分钟· K1</span>
       </div>
-      <div class="tab_home-course-list" v-show='showAll'>
-        <span class="tab_home-course-list-title">瑜伽 · 脊柱柔韧</span>
-        <span class="tab_home-course-list-time">21分钟· K1</span>
+      <div class="tab_home-course-all">
+        <router-link to='allCourse'>查看全部</router-link>
       </div>
-      <div class="tab_home-course-list" v-show='showAll'>
-        <span class="tab_home-course-list-title">瑜伽 · 脊柱柔韧</span>
-        <span class="tab_home-course-list-time">21分钟· K1</span>
-      </div>
-      <div class="tab_home-course-all" @click='show'>查看全部</div>
     </Basket>
   
     <!--content three-->
@@ -111,7 +108,6 @@
     },
     data(){
       return{
-        showAll: false,
         url:'../../static/image/1538125542861_750x340.jpg',
         // 精选内容
         selectrain:[
@@ -133,11 +129,6 @@
           }
         ]
       }
-    },
-    methods:{
-      show(){
-        return this.showAll = !this.showAll
-      }
     }
   }
 </script>
@@ -155,6 +146,13 @@
       &-total
         position relative
         margin-bottom 16px
+        &-icon
+          position relative
+          top 3px
+          display inline-block
+          width 20px
+          height 15px
+          background transparent url('../../../assets/images/lArrow.svg') 0 100% / 15px 15px no-repeat
       &-sport
         position relative
         &-title

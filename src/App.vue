@@ -41,22 +41,13 @@
 
 <script>
 import jwt_decode from 'jwt-decode'
-
+import { isEmpty } from './utils/utils'
 export default {
   name: 'App',
   computed:{
     showBottomTab(){
       const show = this.$route.name === 'sport' || this.$route.name === 'discover' || this.$route.name === 'community' || this.$route.name === 'mine';
       return show ? true : false
-    }
-  },
-  methods:{
-    isEmpty(value){ 
-      return(
-        value === undefined || value === null || 
-        (typeof value === 'object' && Object.keys(value).length === 0) || 
-        (typeof value === 'string' && value.trim().length === 0)
-      );
     }
   },
   created(){
@@ -72,7 +63,7 @@ export default {
        }else{
           //未过期
           //Authorization
-          this.$store.dispatch("setIsAuthenticated", !this.isEmpty(decode)); //state true false
+          this.$store.dispatch("setIsAuthenticated", !isEmpty(decode)); //state true false
           this.$store.dispatch("setUser", decode); //存储信息·
        } 
     }
@@ -82,6 +73,7 @@ export default {
 
 <style lang='stylus'>
 #App
+  padding-top 50px
   background-color rgb(250, 250, 250)
   .tab
     position fixed

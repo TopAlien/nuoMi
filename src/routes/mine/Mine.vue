@@ -5,24 +5,25 @@
       <div class="mine_wrap-user">
         <img :src="'http://localhost:3000/images/'+user.avatar" :style='{ width:"70px", height:"70px", borderRadius:"50%" }'>
         <div class="mine_wrap-user-info">
-          <p class="mine_wrap-user-info-user">{{ user.name }}</p>
+          <router-link to='data'>
+            <p class="mine_wrap-user-info-user">{{ user.name }}</p>
+          </router-link>
           <p class="mine_wrap-user-info-btn">成为 nuoMi 会员</p>
-          <span class="mine_wrap-user-info-icon" />
+          <router-link to='data'>
+            <span class="mine_wrap-user-info-icon" />
+          </router-link>
         </div>
       </div>
 
       <!-- KG.O -->
       <div class="mine_wrap-lineLink">
         <span class="mine_wrap-lineLink-title">KG.O</span>
-        <div>
-          <span class="mine_wrap-lineLink-name">等级中心</span>
-          <i class="mine_wrap-lineLink-icon"/>
-        </div>
-      </div>
-      <!-- 我的数据 -->
-      <div class="mine_wrap-data">
-        <span class="mine_wrap-data-name">我的数据</span>
-        <i class="mine_wrap-data-icon"/>
+        <router-link to='grade'>
+          <div>
+            <span class="mine_wrap-lineLink-name">等级中心</span>
+            <i class="mine_wrap-lineLink-icon"/>
+          </div>
+        </router-link>
       </div>
       <div class="mine_wrap-total">
         <div class="mine_wrap-total-item">
@@ -65,10 +66,10 @@
         <LineLink v-for='item in mineData.slice(0,3)' :key='item.title' :options='item'/>
       </div>
       <div class="mine_wrap-list">
-        <LineLink v-for='item in mineData.slice(3,6)' :key='item.title' :options='item'/>
+        <LineLink v-for='item in mineData.slice(3,5)' :key='item.title' :options='item'/>
       </div>
       <div class="mine_wrap-list">
-       <LineLink v-for='item in mineData.slice(6)' :key='item.title' :options='item'/>
+       <LineLink v-for='item in mineData.slice(5)' :key='item.title' :options='item'/>
       </div>
     </div>
   </div>
@@ -96,7 +97,7 @@
         mineData :[
           {
             title:'我的课程',
-            url: 'discover'
+            url: 'allCourse'
           },
           {
             title: '我的活动',
@@ -112,12 +113,8 @@
           },
           {
             title: '我的徽章',
-            url: 'discover',
+            url: 'badge',
             number: '0'
-          },
-          {
-            title: '应用与设备',
-            url: 'discover'
           },
           {
             title:'我的钱包',
@@ -191,28 +188,6 @@
         color #24c789
       &-name
         font-size 12px
-        font-weight 200
-      &-icon
-        display inline-block
-        vertical-align top
-        width 25px
-        height 40px
-        background transparent url('../../../src/assets/images/lArrow.svg') 100% 50% / 20px 20px no-repeat
-    
-    &-data
-      background-color #fff
-      display flex
-      height 38px
-      line-height 38px
-      padding 6px 14px
-      justify-content space-between
-      position relative
-      &-title
-        font-size 20px
-        font-weight 400
-        color #24c789
-      &-name
-        font-size 16px
         font-weight 200
       &-icon
         display inline-block

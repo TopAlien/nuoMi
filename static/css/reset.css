@@ -57,6 +57,9 @@ a {
     text-decoration: none;
     -webkit-backface-visibility: hidden;
 }
+ textarea{
+    resize: none ;
+ }
 
 li {
     list-style: none;

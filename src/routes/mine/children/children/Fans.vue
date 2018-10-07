@@ -1,10 +1,10 @@
 <template>
   <div>
-    二迷码
+    <h1>您还没有粉丝</h1>
   </div>
 </template>
 <script>
   export default{
-    name:'scan'
+    name:'fans',
   }
 </script>

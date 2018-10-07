@@ -14,13 +14,11 @@
 * title 标题,
 * show: 显示 箭头➡️
 * number 可选
-    title:{
-        type:  String,
-        required: true
-      },
-      number:{
-        type: String
-      },
+    options:{
+      title,
+      url,
+      number
+    }
 */
 <script>
   export default{

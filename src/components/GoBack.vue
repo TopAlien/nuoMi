@@ -1,7 +1,7 @@
 <template>
   <div class="goBack">
-    <i class="goBack_icon" @click='goBack'/>
-    <span class="goBack_title">{{ title }}</span>
+    <i class="goBack_icon" @click='$router.go(-1)'/>
+    <span class="goBack_title" v-if='title'>{{ title }}</span>
   </div>
 </template>
 /**
@@ -14,21 +14,21 @@
       title: {
         type: String
       }
-    },
-    methods:{
-      goBack(){
-        this.$router.go(-1)
-      }
     }
   }
 </script>
 
 <style lang="stylus">
 .goBack
+  position fixed
+  top 0
+  left 0
+  width 100%
   height 50px
   display flex
   align-items center
   background-color rgb(95, 84, 92)
+  z-index 999
   &_icon
     display inline-block
     width 25px
