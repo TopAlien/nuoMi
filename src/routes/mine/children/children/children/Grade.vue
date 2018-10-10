@@ -104,6 +104,7 @@
     overflow-x scroll
     &-top
       display flex
+      height 55px
       justify-content space-between
       text-align center
       margin-top 70px

@@ -35,7 +35,8 @@
     },
     methods:{
       submit(){
-        this.$axios.post('/login',this.user).then((res)=>{
+        this.$axios.post('/login',this.user)
+        .then((res)=>{
           // 设置请求头 utils http -axios
           //存token
           const { token, success } = res.data;
@@ -51,7 +52,6 @@
           }else{
             alert('请确认后重新登录')
           }
-
         }).catch((err)=>{
           console.log(err) //ti xing
         })
@@ -70,6 +70,8 @@
 <style lang="stylus">
 // #24c789
 .login
+  overflow hidden
+  margin-top -50px
   padding 80px 0 87px
   color #fff
   background-color rgb(95, 84, 92)

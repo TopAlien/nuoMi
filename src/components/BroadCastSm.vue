@@ -16,9 +16,11 @@
         </div>
       </div>
     </div>
-    <div class="broadCastSm_btn">
-      查看更多
-    </div>
+    <router-link :to='moreUrl'>
+      <div class="broadCastSm_btn">
+        查看更多
+      </div>
+    </router-link>
   </Basket>
 </template>
 
@@ -34,6 +36,9 @@
       arrInfo:{
         type: Array,
         required: true
+      },
+      moreUrl:{
+        type: String
       }
     },
     computed:{
@@ -44,6 +49,7 @@
   }
 </script>
 /**
+  查看更多
   小图滑动预览  {}>=2
    arrInfo:[{
     title:''  --第一个对象里面要传 {{ arrInfo[0].title }}

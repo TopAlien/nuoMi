@@ -8,7 +8,7 @@
             :class="['sport_tab-list-item', { activeTab: currentTab === item.name }]"
             v-for='item in tabItem' 
             :key='item.name'
-            @click="currentTab=item.name"
+            @click="toggleTab(item.name)"
         >
          {{ item.title }}</li>
       </ul>   
@@ -82,6 +82,24 @@ export default {
   computed:{
     currentTabCompnent(){
       return this.currentTab
+    }
+  },
+  methods:{
+    toggleTab(name){
+      if(window.localStorage.currentTab == name){
+        // 点击一样的就不存了
+        return false
+      }else{
+        window.localStorage.setItem('currentTab',name);
+      }
+      return this.currentTab = name
+    }    
+  },
+  created(){
+    if(window.localStorage.currentTab){
+      this.currentTab = window.localStorage.currentTab
+    }else{
+      this.currentTab = 'Home'
     }
   }
 }

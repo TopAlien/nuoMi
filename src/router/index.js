@@ -1,8 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Sport from '@/routes/sport/Sport'
-import AllCourse from '@/routes/sport/tabContent/children/AllCourse'
+import TrainCourse from '@/routes/sport/tabContent/children/TrainCourse'
+import AllCourse from '@/routes/discover/components/AllCourse'
+import Challen from '@/routes/discover/components/Challen'
+import Diet from '@/routes/discover/components/Diet'
 import MyData from '@/routes/sport/tabContent/children/MyData'
+import Train from '@/routes/sport/tabContent/children/Train'
+import Library from '@/routes/sport/tabContent/children/Library'
+import LibraryWrap from '@/routes/sport/tabContent/children/components/LibraryWrap'
 
 import Discover from '@/routes/discover/Discover'
 import Community from '@/routes/community/Community'
@@ -25,6 +31,9 @@ import Publish from '@/routes/mine/children/children/children/Publish'
 import Grade from '@/routes/mine/children/children/children/Grade'
 import Account from '@/routes/mine/children/children/Account'
 
+//shopp
+import Shopp from '@/routes/shoppMall/Shopp'
+
 Vue.use(Router)
 
 const routes = [
@@ -36,14 +45,45 @@ const routes = [
       component: Sport
     },
     {
+      path:'/trainCourse',
+      name:'trainCourse',
+      component: TrainCourse
+    },
+    {
       path:'/allCourse',
       name:'allCourse',
       component: AllCourse
     },
     {
+      path:'/challen',
+      name:'challen',
+      component: Challen
+    },
+    {
+      path:'/diet',
+      name:'diet',
+      component: Diet
+    },
+    {
       path:'/myData',
       name:'myData',
       component: MyData
+    },
+    {
+      path:'/train',
+      name:'train',
+      component: Train
+    },
+    {
+      path:'/library',
+      name:'library',
+      component: Library
+    },
+    {
+      path:'/libraryWrap',
+      name:'libraryWrap',
+      component: LibraryWrap,
+      // props: (route) => ({ query: route.query.data })
     },
     {
       path: '/discover',
@@ -149,7 +189,16 @@ const routes = [
       path: '/account',
       name: 'account',
       component: Account
-    }
+    },
+    {
+      path: '/shopp',
+      name: 'shopp',
+      component: Shopp
+    },
+    {
+      path: '*',   // 错误路由
+      redirect: '/sport'   //重定向
+    },
     // setting route end
 ]
 
@@ -159,10 +208,28 @@ const route = new Router({
   routes
 })
 
-// 全局守卫
-// route.beforeEach((to, from, next)=>{
-//   const isLogin = localStorage.jwtToken ? true : false;
-//   next();
-// })
+//全局守卫const isLogin = window.localStorage.jwtToken ? true : false;
+route.beforeEach((to, from, next) => {
+  // to: Route: 即将要进入的目标 路由对象
+  // from: Route: 当前导航正要离开的路由
+  // next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。
+  const nextRoute = ['sport', 'mine', 'discover', 'community']; //可以在加
+  let isLogin = window.localStorage.jwtToken ? true : false;  // 是否登录
+  // 未登录状态；当路由到nextRoute指定页时，跳转至login
+  if (nextRoute.indexOf(to.name) >= 0) {  
+    if (!isLogin) {
+      console.log('what fuck');
+      route.push({ name: 'login' })
+    }
+  }
+  // 已登录状态；当路由到login时，跳转至home 
+  if (to.name === 'login') {
+    if (isLogin) {
+      route.push({ name: 'home' });
+    }
+  }
+  next();
+});
+
 
 export default route

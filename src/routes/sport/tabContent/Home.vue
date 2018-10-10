@@ -24,7 +24,9 @@
     <Basket class="tab_home-course">
       <div class="tab_home-course-list">
         <span class="tab_home-course-list-course">已参加的课程</span>
-        <span class="tab_home-course-list-btn">+添加</span>
+        <router-link to='allCourse'>
+          <span class="tab_home-course-list-btn">+添加</span>
+        </router-link>
       </div>
       <div class="tab_home-course-list">
         <span class="tab_home-course-list-title">剧情燃脂跑 · 帮巴扎黑减肥</span>
@@ -35,7 +37,7 @@
         <span class="tab_home-course-list-time">21分钟· K1</span>
       </div>
       <div class="tab_home-course-all">
-        <router-link to='allCourse'>查看全部</router-link>
+        <router-link to='trainCourse'>查看全部</router-link>
       </div>
     </Basket>
   
@@ -81,7 +83,7 @@
               <div class="list_item-cover-mg">
                 <p class="list_item-cover-info">
                   <span class="list_item-cover-info-title">{{ item.describe }}</span>
-                  <i class="list_item-cover-info-btn" @click='selectrain.splice(index,1)'>X</i>
+                  <i class="list_item-cover-info-btn" @click='selectrain.splice(index,1)' />
                 </p>
                 <p class="list_item-cover-total">累计{{ item.num }}人一参加</p>
                 <p class="list_item-cover-cycle">总时长 {{ item.time }}</p>
@@ -164,9 +166,6 @@
           bottom 0 
           right 0
           color #ccc
-      
-  
-  
   // content two 
   &-course 
     &-list
@@ -191,12 +190,6 @@
     &-all
       text-align center
 
-
-
-
-  
-  
-  
   // content three
   &-plan
     &-title
@@ -266,8 +259,14 @@
               &-title
                 font-size 20px
               &-btn
+                display inline-block
                 position absolute
                 right 10px
+                width 20px
+                height 20px
+                border-radius 50%
+                background white url('../../../assets/images/close.svg') 50% 50% / 10px 10px no-repeat
+
             &-total
               font-size 10px
             &-cycle

@@ -30,7 +30,10 @@
       <div class="myData_wrapper-center">
         <div class="myData_wrapper-center-left">
           <Basket class="left_list">
-            <p class="left_list-title">健身</p>
+            <p class="left_list-title">
+              <i class="left_list-title-icon icon-health"/>
+              健身
+            </p>
             <div class="left_list-wrap">
               <h1>0</h1>
               <span>分钟</span>
@@ -42,7 +45,10 @@
             </div>
           </Basket>
           <Basket class="center_list">
-            <p class="center_list-title">瑜伽</p>
+            <p class="center_list-title">
+              <i class="left_list-title-icon icon-yoga"/>
+              瑜伽
+            </p>
             <div class="center_list-wrap">
               <h1 class="center_list-wrap-num">0.0</h1>
               <span>分钟</span>
@@ -51,21 +57,30 @@
         </div>
         <div class="myData_wrapper-center-right">
           <Basket class="center_list">
-            <p class="center_list-title">跑步</p>
+            <p class="center_list-title">
+              <i class="center_list-title-icon icon-run"/>
+              跑步
+            </p>
             <div class="center_list-wrap">
               <h1 class="center_list-wrap-num">0.0</h1>
               <span>公里</span>
             </div>
           </Basket>
           <Basket class="center_list">
-            <p class="center_list-title">行走</p>
+            <p class="center_list-title">
+              <i class="center_list-title-icon icon-walk"/>
+              行走
+            </p>
             <div class="center_list-wrap">
               <h1 class="center_list-wrap-num">0.0</h1>
               <span>公里</span>
             </div>
           </Basket>
           <Basket class="center_list">
-            <p class="center_list-title">骑行</p>
+            <p class="center_list-title">
+              <i class="center_list-title-icon icon-riding"/>
+              骑行
+            </p>
             <div class="center_list-wrap">
               <h1 class="center_list-wrap-num">0.0</h1>
               <span>公里</span>
@@ -137,7 +152,17 @@
         margin-right 10px
         .left_list
           &-title
-            margin-bottom 25px
+            margin-bottom 30px
+            &-icon
+              display inline-block
+              width 25px
+              height 25px
+              border-radius 50%
+              vertical-align bottom
+            .icon-health
+              background white url('../../../../assets/images/health.svg') 50% 50% / 20px 20px no-repeat
+            .icon-yoga
+              background red url('../../../../assets/images/yoga.svg') 50% 50% / 20px 20px no-repeat
           &-cut
             margin-top 34px
           &-wrap
@@ -150,6 +175,18 @@
       .center_list
         &-title
           color #5f545c
+          &-icon
+            display inline-block
+            width 25px
+            height 25px
+            border-radius 50%
+            vertical-align bottom
+          .icon-run
+            background #4591d4 url('../../../../assets/images/run.svg') 50% 50% / 20px 20px no-repeat
+          .icon-walk
+            background #4591d4 url('../../../../assets/images/walk.svg') 50% 50% / 20px 20px no-repeat
+          .icon-riding
+            background #4591d4 url('../../../../assets/images/riding.svg') 50% 50% / 20px 20px no-repeat
         &-wrap
           display flex
           align-items flex-end

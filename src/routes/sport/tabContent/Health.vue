@@ -8,7 +8,9 @@
     <Basket class="health-course">
       <div class="health-course-list">
         <span class="health-course-list-train">我的健身训练</span>
-        <span class="health-course-list-btn"> + 添加</span>
+        <router-link to='allCourse'>
+          <span class="health-course-list-btn"> + 添加</span>
+        </router-link>
       </div>
       <div class="health-course-list">
         <span class="health-course-list-title">2分钟体验课程</span>
@@ -38,9 +40,9 @@
      <!-- 正在讨论 -->
      <BroadCast :arrInfo="discussed"/>
      <!-- 动作训练区 -->
-     <BroadCastSm :arrInfo="training"/>
+     <BroadCastSm :arrInfo="training" :moreUrl='moreTrainUrl'/>
      <!-- 动作库  -->
-     <BroadCastSm :arrInfo="library"/>
+     <BroadCastSm :arrInfo="library" :moreUrl='moreLibraryUrl'/>
      <!-- 0基础 -->
      <BroadCast :arrInfo="basis"/>
      <!-- 发现更多课程 -->
@@ -119,6 +121,8 @@
              url:'../../static/image/1507799644728_750x700.jpg'
           }
         ],
+        moreTrainUrl:'train'
+        ,
         training:[
           {
             id: 0,
@@ -151,6 +155,8 @@
             url:'../../static/image/action5.jpg'
           }
         ],
+        moreLibraryUrl:'library'
+        ,
         library:[
           {
             id: 0,

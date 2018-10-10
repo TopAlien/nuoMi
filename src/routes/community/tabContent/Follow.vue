@@ -15,12 +15,61 @@
             <i class="follow_list-content-btn">关注</i>
           </div>
           <div class="follow_list-content">
-            <div class="follow_list-content-item">213</div>
-            <div class="follow_list-content-item">234</div>
-            <div class="follow_list-content-item">234</div>
+            <div class="follow_list-content-item">
+              <img src="../../../assets/images/action1.jpg" alt="">
+            </div>
+            <div class="follow_list-content-item">
+              <img src="../../../assets/images/action5.jpg" alt="">
+            </div>
+            <div class="follow_list-content-item">
+              <img src="../../../assets/images/banner1.jpg" alt="">
+            </div>
           </div>
           <span class="follow_list-index">附近的人</span>
         </div>
+
+        <!--  -->
+        <div class="Wrapper">
+          <div class="follow_list-content">
+            <img src="@/assets/images/qq.png" alt="" :style="{width:'40px',height:'40px',borderRadius:'50%',backgroundColor:'#24c789'}">
+            <span class="follow_list-content-name">吴晓蕾</span>
+            <span class="follow_list-content-title">八十多主题工作室创始人</span>
+            <i class="follow_list-content-btn">关注</i>
+          </div>
+          <div class="follow_list-content">
+            <div class="follow_list-content-item">
+              <img src="../../../assets/images/action5.jpg" alt="">
+            </div>
+            <div class="follow_list-content-item">
+               <img src="../../../assets/images/banner1.jpg" alt="">
+            </div>
+            <div class="follow_list-content-item">
+               <img src="../../../assets/images/action1.jpg" alt="">
+            </div>
+          </div>
+          <span class="follow_list-index">附近的人</span>
+        </div>
+        <div class="Wrapper">
+          <div class="follow_list-content">
+            <img src="@/assets/images/qq.png" alt="" :style="{width:'40px',height:'40px',borderRadius:'50%',backgroundColor:'#24c789'}">
+            <span class="follow_list-content-name">吴晓蕾</span>
+            <span class="follow_list-content-title">八十多主题工作室创始人</span>
+            <i class="follow_list-content-btn">关注</i>
+          </div>
+          <div class="follow_list-content">
+            <div class="follow_list-content-item">
+              <img src="../../../assets/images/banner1.jpg" alt="">
+            </div>
+            <div class="follow_list-content-item">
+              <img src="../../../assets/images/action5.jpg" alt="">
+            </div>
+            <div class="follow_list-content-item">
+              <img src="../../../assets/images/action1.jpg" alt="">
+            </div>
+          </div>
+          <span class="follow_list-index">附近的人</span>
+        </div>
+        <!--  -->
     </div>
   </div>
 </template>
@@ -52,6 +101,7 @@
     & .Wrapper
       padding-bottom 10px
       border-bottom 1px solid #ccc
+      margin-bottom 30px
     &-content
       margin-bottom 15px
       display flex
@@ -74,6 +124,9 @@
         width 110px
         height 110px
         background-color #ccc
+        & img
+          width 100%
+          height 100%
     &-index
       padding 2px 4px
       background-color rgb(250,250,250)

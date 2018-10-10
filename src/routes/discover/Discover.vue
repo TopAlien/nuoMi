@@ -6,24 +6,32 @@
     </div>
     <ul class="discover_icons">
       <li>
-        <i class="icon discover_icons-source"/>
-        <span>全部课程</span>
+        <router-link to='allCourse'>
+          <i class="icon discover_icons-source"/>
+          <span>全部课程</span>
+        </router-link>
       </li>
       <li>
-        <i class="icon discover_icons-challen"/>
-        <span>活动挑战</span>
+        <router-link to='challen'>
+          <i class="icon discover_icons-challen"/>
+          <span>活动挑战</span>
+        </router-link>
       </li>
       <li>
-        <i class="icon discover_icons-shopp"/>
-        <span>运动商城</span>
+        <router-link to='shopp'>
+          <i class="icon discover_icons-shopp"/>
+          <span>运动商城</span>
+        </router-link>
       </li>
       <li>
         <i class="icon discover_icons-location"/>
         <span>nuoMiland</span>
       </li>
       <li>
-        <i class="icon discover_icons-diet"/>
-        <span>健康饮食</span>
+        <router-link to='diet'>
+          <i class="icon discover_icons-diet"/>
+          <span>健康饮食</span>
+        </router-link>
       </li>
     </ul>
     <div class="discover_calendar discover_box">
@@ -257,18 +265,18 @@
         },
         allShow: false, //展开全部,后期通过计算个数截取显示
         // 轮播图片 
-        listImg:[
+        listImg:[   
           {
-            url:'../../../static/banner1.jpg'
+            url:'../../../static/1538215096151_750x340.jpg'
           },
           {
-            url:'../../../static/banner2.jpg'
+            url:'../../../static/1538980672664_750x340.jpg'
           },
           {
-            url:'../../../static/banner3.jpg'
+            url:'../../../static/1538966114813_750x340.jpg'
           },
           {
-            url:'../../../static/banner4.jpg'
+            url:'../../../static/1538973105079_750x340.jpg'
           }
         ],
         food:[

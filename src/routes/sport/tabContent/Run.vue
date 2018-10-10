@@ -75,21 +75,21 @@
             title: '为你推荐',
             describe: '节前燃脂 ！跑掉秋膘',
             describeSm: '最后100件 T 恤免费送',
-            url:'../../static/image/banner3.jpg'
+            url:'../../static/1538213364197_750x340.jpg'
           },
           {
             id: 1,
             title: '为你推荐',
             describe: '国庆最酷活动,你准备好了吗？',
             describeSm: '和全球 nuoMi 一起狂欢吧',
-            url:'../../static/image/banner2.jpg'
+            url:'../../static/1538973105079_750x340.jpg'
           },
           {
             id: 2,
             title: '为你推荐',
             describe: '秋季跑步秘籍,更多奖更好玩',
             describeSm: '城市跑步系列活动全面启动',
-            url:'../../static/image/banner1.jpg'
+            url:'../../static/1538980672664_750x340.jpg'
           }
         ],
         activity:[

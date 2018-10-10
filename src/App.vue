@@ -26,6 +26,7 @@
         </router-link>
       </li>
     </ul>
+    <div class="backToTop" @click.stop="backToTop" v-show='isBackToTop'/>
     <div class="wrapper" v-if='showBottomTab'>
       <keep-alive>
         <router-view />
@@ -49,6 +50,32 @@ export default {
       const show = this.$route.name === 'sport' || this.$route.name === 'discover' || this.$route.name === 'community' || this.$route.name === 'mine';
       return show ? true : false
     }
+  },
+  data(){
+    return{
+      isBackToTop:false
+    }
+  },
+  methods:{
+    backToTop(){
+      document.body.scrollTop = 0 ;
+      document.documentElement.scrollTop = 0;
+    },
+    scrollTop(e){
+      let ev = e || event;
+      let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+      if(scrollTop > 33){
+        return this.isBackToTop = true
+      }else{
+        return this.isBackToTop = false
+      }
+    }
+  },
+  mounted(){
+    window.addEventListener('scroll',this.scrollTop,false);
+  },
+  beforeDestroy(){
+    window.removeEventListener('scroll',this.scrollTop,false);
   },
   created(){
     if(localStorage.jwtToken){
@@ -113,6 +140,15 @@ export default {
     .active  
       .tab_item-icon-mine
         background transparent url('./assets/images/tabMenu/mine-o.svg') 50% 100% / 22px 22px no-repeat
+  .backToTop
+    position fixed
+    bottom 70px
+    right 15px
+    width 40px
+    height 40px
+    background transparent url('./assets/images/backToTop.svg') 0 0 / 40px 40px no-repeat
+    z-index 5
+    opacity .8
   .wrapper
     padding-bottom 60px
 </style>

@@ -97,7 +97,7 @@
         mineData :[
           {
             title:'我的课程',
-            url: 'allCourse'
+            url: 'trainCourse'
           },
           {
             title: '我的活动',

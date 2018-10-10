@@ -58,6 +58,8 @@
 <style lang="stylus">
 // #24c789
 .register
+  overflow hidden
+  margin-top -50px
   padding 35px 0 0
   color #fff
   background-color rgb(95, 84, 92)

@@ -8,7 +8,7 @@
             :class="['community_tab-list-item', { activeTab: currentTab === item.name }]"
             v-for='item in tabItem' 
             :key='item.name'
-            @click="currentTab=item.name"
+            @click="toggleTab(item.name)"
         >
          {{ item.title }}</li>
       </ul>   
@@ -78,9 +78,27 @@
           }],
       }
     },
+    methods:{
+       toggleTab(name){
+        if(window.localStorage.currentTabc == name){
+          // 点击一样的就不存了
+          return false
+        }else{
+          window.localStorage.setItem('currentTabc',name);
+        }
+        return this.currentTab = name
+      } 
+    },
     computed:{
       currentTabCompnent(){
         return this.currentTab
+      }
+    },
+    created(){
+      if(window.localStorage.currentTabc){
+        this.currentTab = window.localStorage.currentTabc
+      }else{
+        this.currentTab = 'Hot'
       }
     }
   }

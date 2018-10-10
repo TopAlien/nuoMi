@@ -9,7 +9,9 @@
     <Basket class="yoga-course">
       <div class="yoga-course-list">
         <span class="yoga-course-list-train">我的瑜伽练习</span>
-        <span class="yoga-course-list-btn"> + 添加</span>
+        <router-link to='allCourse'>
+          <span class="yoga-course-list-btn"> + 添加</span>
+        </router-link>
       </div>
       <div class="yoga-course-list">
         <span class="yoga-course-list-title">5分钟瑜伽体验课</span>
@@ -47,6 +49,11 @@
           <p class="yoga_train-item-cover-bottom">{{ item.level}}</p>
         </div>
       </div>
+      <router-link to='allCourse'>
+        <div :style='{textAlign:"center",marginTop:"20px"}'>
+          查看更多
+        </div>
+      </router-link>
     </Basket>
     <!-- 瑜伽推荐 -->
     <BroadCast :arrInfo='recommend' :guide='guide'/>

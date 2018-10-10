@@ -7,7 +7,7 @@
       <!-- 计算 有几张就 * 260px -->
       <div class="list" :style='{width:infoWidth}'>
         <div class="list_item" v-for='(item, index) in arrInfo' :key='item.id'>
-          <div class="list_item-icon" @click='arrInfo.splice(index, 1)'>X</div>
+          <div class="list_item-icon" @click='arrInfo.splice(index, 1)'></div>
           <div class="list_item-img">
             <img :style="{width:'100%',height:'100%',borderRadius:'5px'}" :src="item.url" alt="">   
           </div>
@@ -52,7 +52,7 @@
     },
     computed:{
       infoWidth(){
-        return this.arrInfo.length>0 ? '260' * this.arrInfo.length + 'px' : '100%'
+        return this.arrInfo.length> 0 ? '260' * this.arrInfo.length + 'px' : '100%'
       }
     }
   }
@@ -83,6 +83,10 @@
           color #24c789
           top 10px
           right 10px
+          width 20px
+          height 20px
+          border-radius 50%
+          background white url('../assets/images/close.svg') 50% 50% / 10px 10px no-repeat
         &:last-child
           padding 0
         &-describe
