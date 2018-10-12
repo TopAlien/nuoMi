@@ -8,7 +8,7 @@
           <router-link to='data'>
             <p class="mine_wrap-user-info-user">{{ user.name }}</p>
           </router-link>
-          <p class="mine_wrap-user-info-btn">成为 nuoMi 会员</p>
+          <p class="mine_wrap-user-info-btn"><i></i>成为nuoMi会员</p>
           <router-link to='data'>
             <span class="mine_wrap-user-info-icon" />
           </router-link>
@@ -157,13 +157,18 @@
         margin-left 20px
         &-btn
           margin-top 10px
-          width 90px
+          width 94px
           padding 4px 8px
           color rgb(167, 147, 76)
           font-weight 200
           font-size 10px
           background-color #777
           border-radius 20px
+          & i
+            display inline-block
+            width 10px
+            height 10px
+            background transparent url('../../assets/images/member.svg') 0 0 / 10px 10px no-repeat
         &-icon
           position absolute
           top 25%
@@ -195,7 +200,7 @@
         width 25px
         height 40px
         background transparent url('../../../src/assets/images/lArrow.svg') 100% 50% / 20px 20px no-repeat
-    
+        
     &-total
       display flex
       background-color #fff

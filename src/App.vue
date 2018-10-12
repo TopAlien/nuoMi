@@ -53,13 +53,25 @@ export default {
   },
   data(){
     return{
-      isBackToTop:false
+      isBackToTop:false,
+      timer: null
     }
   },
   methods:{
     backToTop(){
-      document.body.scrollTop = 0 ;
-      document.documentElement.scrollTop = 0;
+      cancelAnimationFrame(this.timer);
+      const _self = this;
+      const speed = 50;
+      this.timer = requestAnimationFrame(function fn(){
+          let oTop = document.body.scrollTop || document.documentElement.scrollTop;
+          if(oTop > 0){
+              document.body.scrollTop = document.documentElement.scrollTop = oTop - speed;
+              _self.timer = requestAnimationFrame(fn);
+          }else{
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
+            cancelAnimationFrame(_self.timer);
+          }    
+      });
     },
     scrollTop(e){
       let ev = e || event;

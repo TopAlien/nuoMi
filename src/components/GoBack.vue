@@ -31,10 +31,10 @@
   z-index 999
   &_icon
     display inline-block
-    width 25px
-    height 40px
+    width 35px
+    height 35px
     margin 0 10px
-    background transparent url('../assets/images/left.svg') 100% 50% / 20px 20px no-repeat
+    background transparent url('../assets/images/left.svg') 50% 50% / 20px 20px no-repeat
   &_title
     color #fff
 </style>

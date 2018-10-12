@@ -9,9 +9,12 @@
     </div>
     <div class="haveShop_content">
       <div class="haveShop_content-item" v-for='item in shopArr' :key='item.id'>
-        <img class="haveShop_content-item-img" :src="'http:localhost:3000/images/'+item.url" alt="">
-        <p class="haveShop_content-item-text">{{ item.title }}</p>
-        <span class="haveShop_content-item-money">¥{{ item.money }}</span>
+        <router-link to='detailShop'>
+          <img class="haveShop_content-item-img" :src="'http://localhost:3000/images/'+item.url" alt="">
+          <p class="haveShop_content-item-text">{{ item.text }}</p>
+          <p>{{ item.describe }}</p>
+          <span class="haveShop_content-item-money">¥{{ item.money }}</span>
+        </router-link>
       </div>
     </div>
   </div>
@@ -22,11 +25,11 @@ shopArr:[
   {
     id:0,
     topUrl:'http:localhost:3000/images/action1.jpg'
-    topTitle:'室内训练'   ---第二个对象可不传没用的 
+    topTitle:'室内训练'   ---第二个对象可不传没用的
                                   this.topImgUrl = this.shopArr[0].topUrl;
                                   this.title = this.shopArr[0].topTitle;
     url:''http:localhost:3000/images/action1.jpg'
-    title:'健腹轮',
+    text:'健腹轮',
     money:59
   },
   ...
@@ -44,12 +47,18 @@ export default {
   data(){
     return{
       topImgUrl:'',
-      title:''
+      title:'',
+      timer:null
     }
   },
   created(){
-    this.topImgUrl = this.shopArr[0].topUrl;
-    this.title = this.shopArr[0].topTitle;
+    this.timer = setTimeout(()=>{
+      this.topImgUrl = 'http://localhost:3000/images/'+this.shopArr[0].topUrl;
+      this.title = this.shopArr[0].topTitle;
+    },300)
+  },
+  beforeDestroy(){
+    clearTimeout(this.timer);
   }
 }
 </script>

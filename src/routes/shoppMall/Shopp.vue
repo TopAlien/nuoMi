@@ -43,8 +43,10 @@
 		<div class="shopp_banner">
 			<img class="shopp_banner-img" src="../../assets/images/153745894367.png" alt="">
 		</div>
+		<!--  -->
 		<ScrollShop :shopArr='scrollShop'/>
-		<FixedShop :shopArr='fixedShop'/>
+		<FixedShop :shopArr='newShop'/>
+		<!--  -->
 		<!-- 限时折扣 -->
 		<div class="shopp_discount">
 			<div class="shopp_discount-time">
@@ -57,24 +59,25 @@
 			<div class="shopp_discount-content">
 				<div class="shopp_discount-content-item">
 					<img class="shopp_discount-content-item-position" src="../../assets/images/6discount.svg" alt="">
-					<img class="shopp_discount-content-item-img" src="../../assets/images/action1.jpg" alt="">
+					<img class="shopp_discount-content-item-img" src="../../assets/images/5a685898Nb88c4e86.jpg" alt="">
 					<span>¥169</span>
 					<del>¥299</del>
 				</div>
 				<div class="shopp_discount-content-item">
 					<img class="shopp_discount-content-item-position" src="../../assets/images/6discount.svg" alt="">
-					<img class="shopp_discount-content-item-img" src="../../assets/images/action1.jpg" alt="">
+					<img class="shopp_discount-content-item-img" src="../../assets/images/5b729c1cN7d773b3a_1539226293325.jpg" alt="">
 					<span>¥169</span>
 					<del>¥299</del>
 				</div>
 				<div class="shopp_discount-content-item">
 					<img class="shopp_discount-content-item-position" src="../../assets/images/6discount.svg" alt="">
-					<img class="shopp_discount-content-item-img" src="../../assets/images/action1.jpg" alt="">
+					<img class="shopp_discount-content-item-img" src="../../assets/images/5b0e7675N914fc64c.jpg" alt="">
 					<span>¥169</span>
 					<del>¥299</del>
 				</div>
 			</div>
 		</div>
+		<FixedShop :shopArr='detailShop'/>
 		<!-- 周销榜 -->
 		<div class="shopp_grid">
 			<div class="shopp_grid-left">
@@ -105,8 +108,17 @@
 				</div>
 			</div>
 		</div>
-		<HaveTopShop :shopArr='shopData'/>
+		<HaveTopShop :shopArr='peripheryShop'/>
+		<HaveTopShop :shopArr='trainShop'/>
+		<HaveTopShop :shopArr='runShop'/>
+		<HaveTopShop :shopArr='yogaShop'/>
+		<router-link to='cart'>
+			<i class="shopp_cart">
+				<i class="shopp_cart-total" v-if='cartTotal'>{{ cartTotal }}</i>
+			</i>
+		</router-link>
 		<div class="shopp_noMore">
+			
 			- 没有更多商品 -
 		</div>
 	</div>
@@ -146,126 +158,43 @@
             url:'../../../static/1538291694130_750x340.jpg'
           }
 				],
-				shopData:[
-					{
-						id:0,
-						topUrl:'../../../static/banner1.jpg',
-						topTitle:'室内训练',
-						url:'../../../static/banner2.jpg',
-						title:'买买买',
-						money: 99
-					},
-					{
-						id:1,
-						url:'../../../static/banner1.jpg',
-						title:'买你妹',
-						money: 55
-					},
-					{
-						id:2,
-						url:'../../../static/banner4.jpg',
-						title:'买个毛线',
-						money:77
-					},
-					{
-						id:3,
-						url:'../../../static/banner3.jpg',
-						title:'买什么买',
-						money:66
-					}
-				],
-				fixedShop:[
-					{
-						id:0,
-						title:'新品上线',
-						url:'../../../static/banner1.jpg',
-						text:'智能体制陈',
-						money: 99
-					},
-					{
-						id:1,
-						title:'新品上线',
-						url:'../../../static/banner1.jpg',
-						text:'智能体制陈智能体制陈智能体制陈智能体制陈智能体制陈智能体制陈智能体制陈',
-						money: 99
-					},
-					{
-						id:2,
-						title:'新品上线',
-						url:'../../../static/banner1.jpg',
-						text:'智能体制陈',
-						money: 99
-					},
-					{
-						id:3,
-						title:'新品上线',
-						url:'../../../static/banner1.jpg',
-						text:'智能体制陈',
-						money: 99
-					},
-					{
-						id:4,
-						title:'新品上线',
-						url:'../../../static/banner1.jpg',
-						text:'智能体制陈',
-						money: 99
-					},
-					{
-						id:6,
-						title:'新品上线',
-						url:'../../../static/banner1.jpg',
-						text:'智能体制陈',
-						money: 99
-					}
-				],
-				scrollShop:[
-					{
-						id:0,
-						title:'人气单品',
-						url:'../../../static/banner2.jpg',
-						text:'智能体脂秤',
-						describe:'多彩好看 智能体脂秤',
-						money: 99
-					},
-					{
-						id:1,
-						title:'人气单品',
-						url:'../../../static/banner2.jpg',
-						text:'智能体脂秤',
-						describe:'多彩好看 智能体脂秤',
-						money: 99
-					},
-					{
-						id:2,
-						title:'人气单品',
-						url:'../../../static/banner2.jpg',
-						text:'智能体脂秤',
-						describe:'多彩好看 智能体脂秤',
-						money: 99
-					},
-					{
-						id:3,
-						title:'人气单品',
-						url:'../../../static/banner2.jpg',
-						text:'智能体脂秤',
-						describe:'多彩好看 智能体脂秤',
-						money: 99
-					},
-					{
-						id:4,
-						title:'人气单品',
-						url:'../../../static/banner2.jpg',
-						text:'智能体脂秤',
-						describe:'多彩好看 智能体脂秤',
-						money: 99
-					}
-				]
+				scrollShop:[], //人气单品
+				newShop:[], //新品上线
+				detailShop:[], //必买清单
+				peripheryShop:[],//周边小物
+				trainShop:[],//室内训练
+				runShop:[],//跑步骑行
+				yogaShop:[] //瑜伽舒展
+			}
+		},
+		computed:{
+			cartTotal(){
+				return 1
 			}
 		},
 		methods:{
 			toggleAllow(){
 				return this.allow == '关注' ? this.allow = '已关注' : this.allow = '关注'
+			},
+			fetchData(){
+				this.$axios.get('/discover/getShop')
+				.then((res)=>{
+					const dataArr = res.data;
+					this.scrollShop = dataArr.slice(0,8);
+					this.newShop = dataArr.slice(8,17);
+					this.detailShop = dataArr.slice(17,23);
+					this.peripheryShop = dataArr.slice(23,27);
+					this.trainShop = dataArr.slice(27,31);
+					this.runShop = dataArr.slice(31,35);
+					this.yogaShop = dataArr.slice(35,39);
+				})
+				.catch((err)=>{
+					console.log('err:' + err);
+				})
 			}
+		},
+		created(){
+			this.fetchData();
 		}
 	}
 </script>
@@ -312,7 +241,7 @@ background-color #fff
 			.icon-shiled
 				background transparent url('../../assets/images/shield.svg') 100% 100% / 15px 15px no-repeat 
 		&-right
-			padding 10px
+			padding 9px
 			&-fans
 				margin-bottom 5px
 			&-allow
@@ -448,6 +377,31 @@ background-color #fff
 				background-color rgb(138,192,171)
 			.right-bottom
 				background-color rgb(150,150,209)
+	&_cart
+		position fixed
+		display inline-block
+		width 40px
+		height 40px
+		background #24c789 url('../../assets/images/cart.svg') 50% 50% / 25px 25px no-repeat
+		border-radius 50%
+		bottom 15px
+		right 15px
+		&-total
+			position relative
+			left 25px
+			top -6px
+			display inline-block
+			width 18px
+			height 18px
+			line-height 18px
+			border-radius 50%
+			color red
+			font-size 10px
+			font-weight 200
+			border 1px solid red
+			background-color #fff
+			text-align center
+			overflow hidden
 	&_noMore
 		width 100%
 		height 50px
@@ -455,4 +409,5 @@ background-color #fff
 		font-weight 200
 		font-size 12px
 		text-align center
+		
 </style>

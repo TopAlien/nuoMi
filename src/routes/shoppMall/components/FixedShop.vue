@@ -1,12 +1,14 @@
 <template>
   <div class="fixedShop">
     <p class="fixedShop_title">{{ title }}</p>
-    <div class="fixedShop_content">
-      <div class="fixedShop_content-item" v-for='item in shopArr' :key='item.id'>
-        <img class="fixedShop_content-item-img" :src="'http:localhost:3000/images/'+item.url" alt="">
-        <p class="fixedShop_content-item-text">{{ item.text }}</p>
-        <span class="fixedShop_content-item-money">¥{{ item.money }}</span>
-      </div>
+    <div class="fixedShop_content">   
+        <div class="fixedShop_content-item" v-for='item in shopArr' :key='item.id'>
+          <router-link to='detailShop'>
+            <img class="fixedShop_content-item-img" :src="'http://localhost:3000/images/'+item.url" alt="">
+            <p class="fixedShop_content-item-text">{{ item.text }}</p>
+            <span class="fixedShop_content-item-money">¥{{ item.money }}</span>
+          </router-link>
+        </div> 
     </div>
   </div>
 </template>
@@ -20,7 +22,6 @@ shopArr:[
     money: 99
   }
 ]
-
  */
 <script>
   export default {
@@ -33,11 +34,18 @@ shopArr:[
     },
     data(){
       return{
-        title:''
+        title:'',
+        timer: null
       }
     },
     created(){
-      this.title = this.shopArr[0].title;
+      clearTimeout(this.timer);
+      this.timer = setTimeout(()=>{
+        this.title = this.shopArr[0].title;
+      },300)
+    },
+    beforeDestroy(){
+      clearTimeout(this.timer);
     }
   }
 </script>
@@ -62,6 +70,7 @@ shopArr:[
       &-img
         width 111px
         height 111px
+        
       &-text
         display -webkit-box
         width 111px

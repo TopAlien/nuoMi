@@ -6,7 +6,7 @@
     </div>
     <ul class="courseWrap_content">
       <li class="courseWrap_content-item" v-for='item in courseArr' :key='item.id'>
-        <img :src="item.url" alt="">
+        <img :src="'http://localhost:3000/images/' + item.url" alt="">
         <div class="courseWrap_content-item-cover">
           <p class="courseWrap_content-item-cover-title">{{ item.text }}</p>
           <span class="courseWrap_content-item-cover-num">{{ item.num }}人已参加</span>
@@ -32,8 +32,6 @@ courseArr:[
     time: 12 -分钟
   }
 ]
-
-
  */
 <script>
 export default {
@@ -46,11 +44,22 @@ export default {
   },
   data(){
     return{
-      title:''
+      title:'',
+      timer: null
     }
   },
   created(){
-    this.title = this.courseArr[0].title;
+    //为什么啊这是
+    // this.$nextTick(()=>{
+    //   this.title = this.courseArr[0].title;
+    // })
+    clearTimeout(this.timer);
+    this.timer = setTimeout(()=>{
+      this.title = this.courseArr[0].title;
+    }, 100);
+  },
+  beforeDestroy(){
+    clearTimeout(this.timer);
   }
 }
 </script>

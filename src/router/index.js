@@ -33,6 +33,8 @@ import Account from '@/routes/mine/children/children/Account'
 
 //shopp
 import Shopp from '@/routes/shoppMall/Shopp'
+import Cart from '@/routes/shoppMall/children/Cart'
+import DetailShop from '@/routes/shoppMall/children/DetailShop'
 
 Vue.use(Router)
 
@@ -194,6 +196,16 @@ const routes = [
       path: '/shopp',
       name: 'shopp',
       component: Shopp
+    },
+    {
+      path:'/cart',
+      name:'cart',
+      component: Cart
+    },
+    {
+      path:'/detailShop',
+      name:'detailShop',
+      component: DetailShop
     },
     {
       path: '*',   // 错误路由

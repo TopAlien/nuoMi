@@ -4,10 +4,12 @@
     <div class="scrollShop_wrap">
       <ul class="scrollShop_wrap-list" :style="{ width: len * 100 + 'px'}">
         <li class="scrollShop_wrap-list-item" v-for="item in shopArr" :key='item.id'>
-          <img class="scrollShop_wrap-list-item-img" :src="'http:localhost:3000/images/'+item.url" alt="">
-          <p class="scrollShop_wrap-list-item-text">{{ item.text }}</p>
-          <p class="scrollShop_wrap-list-item-describe">{{ item.describe }}</p>
-          <span class="scrollShop_wrap-list-item-money">¥{{ item.money }}</span>
+          <router-link to='detailShop'>
+            <img class="scrollShop_wrap-list-item-img" :src="'http://localhost:3000/images/'+item.url" alt="">
+            <p class="scrollShop_wrap-list-item-text">{{ item.text }}</p>
+            <p class="scrollShop_wrap-list-item-describe">{{ item.describe }}</p>
+            <span class="scrollShop_wrap-list-item-money">¥{{ item.money }}</span>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -24,7 +26,6 @@ shopArr:[
     money: 199
   }
 ]
-
 */
 <script>
   export default {
@@ -38,12 +39,18 @@ shopArr:[
     data(){
       return{
         title:'',
-        len:0
+        len:0,
+        timer: null
       }
     },
     created(){
-      this.title = this.shopArr[0].title;
-      this.len = this.shopArr.length;
+      clearTimeout(this.timer);
+        this.timer = setTimeout(()=>{
+          this.title = this.shopArr[0].title;
+        },300)
+    },
+    beforeDestroy(){
+      clearTimeout(this.timer);
     }
   }
 </script>
