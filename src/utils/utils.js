@@ -9,4 +9,5 @@ export  const isEmpty = (value) =>{
 
 export const completionImgUrl = ( url ) =>{
   return 'http://localhost:3000/images/' + url;
+  //return 'http://94.191.17.174:3000/images/'+url
 }

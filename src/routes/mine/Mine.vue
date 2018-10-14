@@ -3,12 +3,14 @@
     <TopBar :options='optionsHead'/>
     <div class="mine_wrap">
       <div class="mine_wrap-user">
-        <img :src="'http://localhost:3000/images/'+user.avatar" :style='{ width:"70px", height:"70px", borderRadius:"50%" }'>
+        <img :src="completionImgUrl(user.avatar)" :style='{ width:"70px", height:"70px", borderRadius:"50%" }'>
         <div class="mine_wrap-user-info">
           <router-link to='data'>
             <p class="mine_wrap-user-info-user">{{ user.name }}</p>
           </router-link>
-          <p class="mine_wrap-user-info-btn"><i></i>成为nuoMi会员</p>
+          <router-link to='member'>
+            <p class="mine_wrap-user-info-btn"><i></i>成为nuoMi会员</p>
+          </router-link>
           <router-link to='data'>
             <span class="mine_wrap-user-info-icon" />
           </router-link>
@@ -32,7 +34,7 @@
         </div>
         <div class="mine_wrap-total-item">
           <p class="mine_wrap-total-item-title">本周排名 <i>第 - 名</i></p>
-          <img :src="'http://localhost:3000/images/'+user.avatar" :style='{ width:"30px", height:"30px"}'>
+          <img :src="completionImgUrl(user.avatar)" :style='{ width:"30px", height:"30px"}'>
         </div>
       </div>
       <!-- 今日运动滑动 -->
@@ -76,8 +78,11 @@
 </template>
 
 <script>
+  import { completionImgUrl } from '@/utils/utils'
   import TopBar from '@/components/TopBar'
   import LineLink from '@/components/LineLink'
+
+
   export default {
     name: 'mine',
     components:{
@@ -87,6 +92,7 @@
     data () {
       return {
         user:{}, //用户信息
+        completionImgUrl:null,
         optionsHead:{
           title:'我',
           scan:'scan', //路径组件内置了
@@ -136,6 +142,7 @@
       }
     },
     created(){
+      this.completionImgUrl = completionImgUrl
       this.user = this.$store.getters.user
     }
   }

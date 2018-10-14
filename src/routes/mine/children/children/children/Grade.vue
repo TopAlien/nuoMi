@@ -2,7 +2,7 @@
   <div class="grade">
     <GoBack :title='title'/>
     <div class="grade_user">
-      <img class="grade_user-avatar" :src="'http://localhost:3000/images/'+user.avatar" alt="">
+      <img class="grade_user-avatar" :src="completionImgUrl(user.avatar)" alt="">
       <span class="grade_user-record">得分记录</span>
       <p class="grade_user-name">{{ user.name }}</p>
       <p>120 成长值</p>
@@ -45,6 +45,7 @@
   </div>
 </template>
 <script>
+  import {completionImgUrl} from '@/utils/utils'
   import GoBack from '@/components/GoBack'
   export default {
     name:'grade',
@@ -54,6 +55,7 @@
     data(){
       return{
         user:{},
+        completionImgUrl:null,
         title:'我的 nuoMi 等级'
       }
     },
@@ -66,6 +68,7 @@
       }
     },
     created(){
+      this.completionImgUrl = completionImgUrl;
       this.user = this.$store.getters.user
     }
   }

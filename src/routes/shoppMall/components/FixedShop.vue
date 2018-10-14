@@ -3,8 +3,8 @@
     <p class="fixedShop_title">{{ title }}</p>
     <div class="fixedShop_content">   
         <div class="fixedShop_content-item" v-for='item in shopArr' :key='item.id'>
-          <router-link to='detailShop'>
-            <img class="fixedShop_content-item-img" :src="'http://localhost:3000/images/'+item.url" alt="">
+          <router-link :to=" 'detailShop?gid=' + item.id  + '&text=' + item.text ">
+            <img class="fixedShop_content-item-img" :src="completionImgUrl(item.url)" alt="">
             <p class="fixedShop_content-item-text">{{ item.text }}</p>
             <span class="fixedShop_content-item-money">¥{{ item.money }}</span>
           </router-link>
@@ -24,6 +24,7 @@ shopArr:[
 ]
  */
 <script>
+  import {completionImgUrl} from '@/utils/utils'
   export default {
     name:'fixedShop',
     props:{
@@ -35,14 +36,16 @@ shopArr:[
     data(){
       return{
         title:'',
-        timer: null
+        timer: null,
+        completionImgUrl:null
       }
     },
     created(){
       clearTimeout(this.timer);
       this.timer = setTimeout(()=>{
         this.title = this.shopArr[0].title;
-      },300)
+      },300);
+      this.completionImgUrl = completionImgUrl;
     },
     beforeDestroy(){
       clearTimeout(this.timer);

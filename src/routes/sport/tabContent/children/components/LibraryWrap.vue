@@ -4,7 +4,7 @@
     <div class="libraryWrap_content">
       <div class="libraryWrap_content-list" v-for='item in itemInfo' :key='item.id'>
         <div>
-          <img class="libraryWrap_content-list-img" :src="'http://localhost:3000/images/'+item.url" alt="">
+          <img class="libraryWrap_content-list-img" :src="completionImgUrl(item.url)" alt="">
         </div>
         <div class="libraryWrap_content-list-item">
          <p class="libraryWrap_content-list-item-title">{{ item.title }}</p>
@@ -26,6 +26,8 @@
  */
 <script>
   import GoBack from '@/components/GoBack'
+  import { completionImgUrl } from '@/utils/utils'
+
   export default {
     name:'libraryWrap',
     components:{
@@ -35,7 +37,8 @@
       return{
         title:'',
         pid: 1,
-        itemInfo:[]
+        itemInfo:[],
+        completionImgUrl:null
       }
     },
      watch: {
@@ -57,7 +60,8 @@
       }
     },
     created(){
-      this.fetchData()
+      this.fetchData();
+      this.completionImgUrl = completionImgUrl;
     }
   }
 </script>

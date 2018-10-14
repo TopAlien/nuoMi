@@ -30,10 +30,14 @@
     },
     methods:{
       fetchData(){
-        this.$axios.get('/discover/getLike')
-        .then((res)=>{
-          this.likeShop = res.data;
-        })
+        this.$axios.get('/discover/getShop?gid=0')
+				.then((res)=>{
+					const dataArr = res.data;
+					this.likeShop = dataArr.slice(39,49);
+				})
+				.catch((err)=>{
+					console.log('err:' + err);
+				})
       }
     },
     created(){

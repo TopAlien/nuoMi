@@ -4,7 +4,7 @@
     <div class="personalData_userBg" />
     <div class="personalData_userData">
       <div class="personalData_userData-avatarWrap">
-        <img class="personalData_userData-avatarWrap-avatar" :src="'http://localhost:3000/images/' + user.avatar" alt="">
+        <img class="personalData_userData-avatarWrap-avatar" :src="completionImgUrl(user.avatar)" alt="">
       </div>
       <router-link to='personal'>
         <span class="personalData_userData-modify">修改资料</span>
@@ -41,6 +41,7 @@
   </div>
 </template>
 <script>
+  import { completionImgUrl } from '@/utils/utils'
   import GoBack from '@/components/GoBack'
   import LineLink from '@/components/LineLink'
 
@@ -53,6 +54,7 @@
     data(){
       return{
         user:{},
+        completionImgUrl:null,
         options:[
           {
             title:'nuoMi成长值',
@@ -76,7 +78,8 @@
       }
     },
     created(){
-      this.user = this.$store.getters.user
+      this.completionImgUrl = completionImgUrl;
+      this.user = this.$store.getters.user;
     }
   }
 </script>

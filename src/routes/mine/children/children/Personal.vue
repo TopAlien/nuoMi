@@ -5,7 +5,7 @@
       <div class="personal_list">
         <label for="avatar">更换头像</label>
         <input class="personal_list-file" type="file" id='avatar' ref='avatar'>
-        <img :src="'http://localhost:3000/images/'+user.avatar" class="personal_list-img"/>
+        <img :src="completionImgUrl(user.avatar)" class="personal_list-img"/>
       </div>
       <div class="personal_list">
         <label for="name">昵称</label>
@@ -28,6 +28,7 @@
   </div>
 </template>
 <script>
+  import {completionImgUrl} from '@/utils/utils'
   import jwt_decode from 'jwt-decode'
   import { isEmpty } from '@/utils/utils'
   import GoBack from '@/components/GoBack'
@@ -38,6 +39,7 @@
     },
     data(){
       return{
+        completionImgUrl:null,
         user:{}, //用户信息
         userName:'',
         userSex:'',
@@ -150,6 +152,7 @@
       }
     },
     created(){
+    this.completionImgUrl = completionImgUrl;
      this.user = this.$store.getters.user
     }
   }

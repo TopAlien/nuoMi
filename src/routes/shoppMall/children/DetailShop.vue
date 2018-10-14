@@ -1,17 +1,20 @@
 <template>
-  <div class="detailShop">
+  <div class="detailShop"
+    @touchend='touchEnd' 
+    @touchstart='touchStart'
+  >
     <GoBack :title='title' :class="{'detailShop_goback':isScroll}"/>
     <div class="detailShop_carouse">
       <Carousel :listImg='listImg'/>
     </div>
     <div class="detailShop_detailed">
       <div class="detailShop_detailed-item">
-        <span class="detailShop_detailed-item-money">¥199</span>
-        <span class="detailShop_detailed-item-sold">已售 5056</span>
+        <span class="detailShop_detailed-item-money">¥{{ money }}</span>
+        <span class="detailShop_detailed-item-sold">已售 {{ soldNum }}</span>
       </div>
       <div class="detailShop_detailed-text">
-        <p class="detailShop_detailed-text-title">Keep 智能体脂秤</p>
-        <span class="detailShop_detailed-text-describe">多才好看,wi-fi 智连让测量更简单 !</span>
+        <p class="detailShop_detailed-text-title">{{ text }}</p>
+        <span class="detailShop_detailed-text-describe">{{ describe }}</span>
       </div>
     </div>
     <div class="detailShop_link">
@@ -49,11 +52,13 @@
         我知道了
       </div>
     </div>
-    <div class="detailShop_member">
-      <i class="detailShop_member-member"/>
-      <p class="detailShop_member-title">会员免邮费,每月再送 ¥50 元代金券</p>
-      <span class="detailShop_member-btn">开通会员</span>
-    </div>
+    <router-link to="member">
+      <div class="detailShop_member">
+        <i class="detailShop_member-member"/>
+        <p class="detailShop_member-title">会员免邮费,每月再送 ¥50 元代金券</p>
+        <span class="detailShop_member-btn">开通会员</span>
+      </div>
+    </router-link>
     <div class="detailShop_address">
       <div class="detailShop_link">
         <p class="detailShop_link-title">配送地址</p>
@@ -61,8 +66,35 @@
         <i class="detailShop_link-icon" />
       </div>
     </div>
-    <div>
-      上拉查看图文详情
+    <div class="detailShop_loadMore">
+      <div class="detailShop_loadMore-title">
+        <i class="detailShop_loadMore-title-icon"/>
+        <p class="detailShop_loadMore-title-title">上拉查看图文详情</p>
+      </div>
+      <div class="detailShop_loadMore-content" v-show='isLoad'>
+        <h1>我没有图文啊</h1>
+        <h1>只有写文字了</h1>
+        <h1>我没有图文啊</h1>
+        <h1>只有写文字了</h1>
+        <h1>我没有图文啊</h1>
+        <h1>只有写文字了</h1>
+        <h1>我没有图文啊</h1>
+        <h1>只有写文字了</h1>
+        <h1>我没有图文啊</h1>
+        <h1>只有写文字了</h1>
+        <h1>我没有图文啊</h1>
+        <h1>只有写文字了</h1>
+        <h1>我没有图文啊</h1>
+        <h1>只有写文字了</h1>
+        <h1>我没有图文啊</h1>
+        <h1>只有写文字了</h1>
+        <h1>我没有图文啊</h1>
+        <h1>只有写文字了</h1>
+        <h1>我没有图文啊</h1>
+        <h1>只有写文字了</h1>
+        <h1>我没有图文啊</h1>
+        <h1>只有写文字了</h1>
+      </div>
     </div>
     <ul class="detailShop_tab">
       <li class="detailShop_tab-item">
@@ -83,6 +115,7 @@
   </div>
 </template>
 <script>
+  import { isEmpty, completionImgUrl } from '@/utils/utils'
   import GoBack from '@/components/GoBack'
   import Carousel from '@/components/Carousel'
 
@@ -96,21 +129,15 @@
       return{
         title:'商品详情',
         isScroll: true,
-        listImg:[   
-          {
-            url:'../../../static/1538215096151_750x340.jpg'
-          },
-          {
-            url:'../../../static/1538980672664_750x340.jpg'
-          },
-          {
-            url:'../../../static/1538966114813_750x340.jpg'
-          },
-          {
-            url:'../../../static/1538973105079_750x340.jpg'
-          }
-        ],
-        isService: false
+        isLoad: false, //加载图文,也是加载数据的开关
+        lastTime: 0,
+        nowTime: 0,
+        isService: false,
+        money: 0,
+        soldNum:0,
+        text:'',
+        describe:'',
+        listImg:[]
       }
     },
     methods:{
@@ -128,10 +155,43 @@
       },
       serviceNone(){
         return this.isService = false
+      },
+      //  loadMore
+      touchStart(){
+        this.lastTime = +new Date();
+      },
+      touchEnd(){
+        this.nowTime = + new Date();
+        if(this.nowTime - this.lastTime > 30){
+          this.isLoad = true
+        }
+      },
+      fetchDate(){
+        //为空是true
+        this.listImg=[];
+        if(!isEmpty(this.$route.query)){
+          const gid = this.$route.query.gid;
+          const text = this.$route.query.text;
+         this.$axios.get(`/discover/getShop?gid=${ gid }&text=${ text }`)
+         .then((res)=>{
+           const { describe, detialImg,money, soldNum, text} = res.data[0];
+           this.describe = describe;
+           this.money = money;
+           this.soldNum = soldNum;
+           this.text = text;
+           detialImg.split(',').forEach(item => {
+               this.listImg.push({ 'url':completionImgUrl(item) });
+           });
+         })
+        }
       }
+    },
+    watch:{
+      '$route': 'fetchDate'
     },
     created(){
       window.addEventListener('scroll', this.scroll ,false);
+      this.fetchDate();
     },
     beforeDestroy(){
       removeEventListener('scroll',this.scroll,false);
@@ -144,7 +204,7 @@
   position relative
   // 弹窗
   &_servicePopup
-    position absolute
+    position fixed
     width 300px
     top 25%
     left 10%
@@ -276,6 +336,26 @@
       color rgb(255,183,106)
       background-color #111
       border-radius 20px
+
+  &_loadMore
+    &-title
+      display flex
+      justify-content center
+      &-title
+        height 40px
+        line-height 40px
+        text-align center
+        color #777
+        font-weight 200
+      &-icon
+        display inline-block
+        width 20px
+        height 40px
+        margin-right 10px
+        background transparent url('../../../assets/images/tArrow.svg') 0 40% / 20px 20px no-repeat
+    &-content
+      margin-top 30px
+      text-align center
   &_tab
     width 100%
     position fixed

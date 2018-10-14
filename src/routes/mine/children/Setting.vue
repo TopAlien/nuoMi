@@ -4,7 +4,7 @@
     <div class="setting_list">
       <div class="setting_user">
         <LineLink class="setting_user-line" :options="user" :show='false' />
-        <img :src="'http://localhost:3000/images/' + users.avatar" alt="" :style="{width:'40px',height:'40px',borderRadius:'50%'}">
+        <img :src="completionImgUrl(users.avatar)" alt="" :style="{width:'40px',height:'40px',borderRadius:'50%'}">
       </div>
       <LineLink class="setting_user-line" v-for='item in settingArr.slice(0,5)' :key='item.title' :options="item" :show='false'/>
     </div>
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+  import { completionImgUrl } from '@/utils/utils'
   import GoBack from '@/components/GoBack'
   import LineLink from '@/components/LineLink'
 
@@ -119,6 +120,7 @@
       }
     },
     created(){
+      this.completionImgUrl = completionImgUrl;
       this.users = this.$store.getters.user
     }
   }

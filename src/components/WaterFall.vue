@@ -66,7 +66,7 @@
           }
           // 因为设置了 absolute  所以高度无法撑开 用 js实现
           this.$refs.waterFall.style.height = document.documentElement.scrollHeight - 150 +'px';
-        },16)
+        },20)
       });
     }
   }

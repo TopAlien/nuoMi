@@ -118,7 +118,6 @@
 			</i>
 		</router-link>
 		<div class="shopp_noMore">
-			
 			- 没有更多商品 -
 		</div>
 	</div>
@@ -177,7 +176,7 @@
 				return this.allow == '关注' ? this.allow = '已关注' : this.allow = '关注'
 			},
 			fetchData(){
-				this.$axios.get('/discover/getShop')
+				this.$axios.get('/discover/getShop?gid=0')
 				.then((res)=>{
 					const dataArr = res.data;
 					this.scrollShop = dataArr.slice(0,8);

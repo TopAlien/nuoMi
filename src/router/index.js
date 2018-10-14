@@ -35,6 +35,7 @@ import Account from '@/routes/mine/children/children/Account'
 import Shopp from '@/routes/shoppMall/Shopp'
 import Cart from '@/routes/shoppMall/children/Cart'
 import DetailShop from '@/routes/shoppMall/children/DetailShop'
+import Member from '@/routes/shoppMall/children/Member'
 
 Vue.use(Router)
 
@@ -208,6 +209,11 @@ const routes = [
       component: DetailShop
     },
     {
+      path:'/member',
+      name:'member',
+      component: Member
+    },
+    {
       path: '*',   // 错误路由
       redirect: '/sport'   //重定向
     },
@@ -217,7 +223,14 @@ const routes = [
 const route = new Router({
   mode:'history',
   linkActiveClass: 'active',
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 
 //全局守卫const isLogin = window.localStorage.jwtToken ? true : false;

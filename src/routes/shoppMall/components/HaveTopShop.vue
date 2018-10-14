@@ -9,8 +9,8 @@
     </div>
     <div class="haveShop_content">
       <div class="haveShop_content-item" v-for='item in shopArr' :key='item.id'>
-        <router-link to='detailShop'>
-          <img class="haveShop_content-item-img" :src="'http://localhost:3000/images/'+item.url" alt="">
+        <router-link :to=" 'detailShop?gid=' + item.id  + '&text=' + item.text ">
+          <img class="haveShop_content-item-img" :src="completionImgUrl(item.url)" alt="">
           <p class="haveShop_content-item-text">{{ item.text }}</p>
           <p>{{ item.describe }}</p>
           <span class="haveShop_content-item-money">¥{{ item.money }}</span>
@@ -36,6 +36,8 @@ shopArr:[
 ]
  */
 <script>
+import { completionImgUrl } from '@/utils/utils'
+
 export default {
   name:'haveTopShop',
   props:{
@@ -46,16 +48,17 @@ export default {
   },
   data(){
     return{
-      topImgUrl:'',
+      topImgUrl:null,
       title:'',
       timer:null
     }
   },
   created(){
     this.timer = setTimeout(()=>{
-      this.topImgUrl = 'http://localhost:3000/images/'+this.shopArr[0].topUrl;
+      this.topImgUrl= this.completionImgUrl(this.shopArr[0].topUrl);
       this.title = this.shopArr[0].topTitle;
-    },300)
+    },300);
+    this.completionImgUrl = completionImgUrl;
   },
   beforeDestroy(){
     clearTimeout(this.timer);

@@ -6,6 +6,7 @@ import router from './router'
 import axios from './utils/http' //有token的axios
 import store from './store'
 
+//axios.defaults.baseURL = 'http://94.191.17.174:3000'
 axios.defaults.baseURL = 'http://localhost:3000'
 
 Vue.prototype.$axios = axios

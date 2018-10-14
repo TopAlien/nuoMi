@@ -4,8 +4,8 @@
     <div class="scrollShop_wrap">
       <ul class="scrollShop_wrap-list" :style="{ width: len * 100 + 'px'}">
         <li class="scrollShop_wrap-list-item" v-for="item in shopArr" :key='item.id'>
-          <router-link to='detailShop'>
-            <img class="scrollShop_wrap-list-item-img" :src="'http://localhost:3000/images/'+item.url" alt="">
+          <router-link :to=" 'detailShop?gid=' + item.id  + '&text=' + item.text ">
+            <img class="scrollShop_wrap-list-item-img" :src="completionImgUrl(item.url)" alt="">
             <p class="scrollShop_wrap-list-item-text">{{ item.text }}</p>
             <p class="scrollShop_wrap-list-item-describe">{{ item.describe }}</p>
             <span class="scrollShop_wrap-list-item-money">¥{{ item.money }}</span>
@@ -28,6 +28,7 @@ shopArr:[
 ]
 */
 <script>
+  import { completionImgUrl } from '@/utils/utils'
   export default {
     name: 'scrollShop',
     props:{
@@ -40,7 +41,8 @@ shopArr:[
       return{
         title:'',
         len:0,
-        timer: null
+        timer: null,
+        completionImgUrl:null
       }
     },
     created(){
@@ -48,6 +50,7 @@ shopArr:[
         this.timer = setTimeout(()=>{
           this.title = this.shopArr[0].title;
         },300)
+      this.completionImgUrl = completionImgUrl;
     },
     beforeDestroy(){
       clearTimeout(this.timer);

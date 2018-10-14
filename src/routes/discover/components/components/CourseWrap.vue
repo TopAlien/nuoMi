@@ -6,7 +6,7 @@
     </div>
     <ul class="courseWrap_content">
       <li class="courseWrap_content-item" v-for='item in courseArr' :key='item.id'>
-        <img :src="'http://localhost:3000/images/' + item.url" alt="">
+        <img :src="completionImgUrl(item.url)" alt="">
         <div class="courseWrap_content-item-cover">
           <p class="courseWrap_content-item-cover-title">{{ item.text }}</p>
           <span class="courseWrap_content-item-cover-num">{{ item.num }}人已参加</span>
@@ -34,6 +34,7 @@ courseArr:[
 ]
  */
 <script>
+import { completionImgUrl } from '@/utils/utils'
 export default {
   name:'courseWrap',
   props:{
@@ -45,18 +46,16 @@ export default {
   data(){
     return{
       title:'',
-      timer: null
+      timer: null,
+      completionImgUrl:null
     }
   },
   created(){
-    //为什么啊这是
-    // this.$nextTick(()=>{
-    //   this.title = this.courseArr[0].title;
-    // })
     clearTimeout(this.timer);
     this.timer = setTimeout(()=>{
       this.title = this.courseArr[0].title;
-    }, 100);
+    }, 350);
+    this.completionImgUrl = completionImgUrl;
   },
   beforeDestroy(){
     clearTimeout(this.timer);

@@ -34,6 +34,8 @@
             loop: true,
             speed: 800,
             autoplay: true, //设置时间不能？？？？
+            observer: true, //处理无法滑动
+            observeParents: true,
             onTouchEnd: function() {
                 swiper.startAutoplay()
             }

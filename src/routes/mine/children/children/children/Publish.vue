@@ -6,7 +6,7 @@
       <span class="publish_topBar-published" @click='published' :style="colorStyle">发布</span>
     </div>
     <div class="publish_avatar">
-      <img :src="'http://localhost:3000/images/'+user.avatar" alt="" :style="{width:'35px',height:'35px',borderRadius:'50%'}">
+      <img :src="'http://94.191.17.174:3000/images/'+user.avatar" alt="" :style="{width:'35px',height:'35px',borderRadius:'50%'}">
     </div>
     <form class="publish_form">
       <textarea class="publish_form-text" name="publish" v-model='publishValue' cols="30" rows="10" placeholder="分享你的心得和经验吧"></textarea>
