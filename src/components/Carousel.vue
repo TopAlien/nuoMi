@@ -28,7 +28,7 @@
     },
     mounted() {
       this.$nextTick(()=>{
-        var swiper = new Swiper('.swiper-container', {
+        const swiper = new Swiper('.swiper-container', {
             pagination: '.swiper-pagination',
             paginationClickable: true,
             loop: true,
@@ -36,11 +36,14 @@
             autoplay: true, //设置时间不能？？？？
             observer: true, //处理无法滑动
             observeParents: true,
-            onTouchEnd: function() {
+            onTouchEnd: ()=> {
                 swiper.startAutoplay()
             }
         });
       })
+    //   this.$once('hook:beforeDestroy', ()=> {
+    //     swiper = null;
+    // })
     }
   }
 </script>

@@ -14,7 +14,7 @@
       </ul>   
     </div>
     <div class="community_content">
-      <keep-alive>
+      <keep-alive include="Hot,Follow,Diet,Transform,Elites,City">
         <componenet :is='currentTabCompnent'></componenet>
       </keep-alive>
     </div>

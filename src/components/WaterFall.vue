@@ -39,9 +39,6 @@
 			}
     },
     mounted(){
-      //  window.addEventListener('load',()=>{
-      //     this.calculate()
-      //  })
       this.$nextTick(()=>{
           setTimeout(()=>{
           const currentWidth = document.documentElement.clientWidth*92/100; //承载容器宽度

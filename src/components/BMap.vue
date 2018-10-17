@@ -49,6 +49,9 @@
             alert('failed'+this.getStatus());
           }        
         });
+        this.$once('hook:beforeDestroy', ()=>{
+          geolocation
+        })
       }
     }
   }

@@ -16,7 +16,6 @@
           </router-link>
         </div>
       </div>
-
       <!-- KG.O -->
       <div class="mine_wrap-lineLink">
         <span class="mine_wrap-lineLink-title">KG.O</span>
@@ -127,12 +126,8 @@
             url: 'discover'
           },
           {
-            title:'我的订单',
-            url: 'discover'
-          },
-          {
             title:'购物车',
-            url: 'discover'
+            url: 'cart'
           },
           {
             title:'免流量服务',

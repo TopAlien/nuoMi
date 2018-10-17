@@ -14,7 +14,7 @@
       </ul>   
     </div>
     <div class="sport_content">
-      <keep-alive>
+      <keep-alive :include='/Home|Health|Run|Kit|Yoga|Walk|Riding/'>
         <componenet :is='currentTabCompnent'></componenet>
       </keep-alive>
     </div>

@@ -72,28 +72,12 @@
         <p class="detailShop_loadMore-title-title">上拉查看图文详情</p>
       </div>
       <div class="detailShop_loadMore-content" v-show='isLoad'>
-        <h1>我没有图文啊</h1>
-        <h1>只有写文字了</h1>
-        <h1>我没有图文啊</h1>
-        <h1>只有写文字了</h1>
-        <h1>我没有图文啊</h1>
-        <h1>只有写文字了</h1>
-        <h1>我没有图文啊</h1>
-        <h1>只有写文字了</h1>
-        <h1>我没有图文啊</h1>
-        <h1>只有写文字了</h1>
-        <h1>我没有图文啊</h1>
-        <h1>只有写文字了</h1>
-        <h1>我没有图文啊</h1>
-        <h1>只有写文字了</h1>
-        <h1>我没有图文啊</h1>
-        <h1>只有写文字了</h1>
-        <h1>我没有图文啊</h1>
-        <h1>只有写文字了</h1>
-        <h1>我没有图文啊</h1>
-        <h1>只有写文字了</h1>
-        <h1>我没有图文啊</h1>
-        <h1>只有写文字了</h1>
+        <h5>我没有图文啊</h5>
+        <h5>只有写文字了</h5>
+        <h5>我没有图文啊</h5>
+        <h5>只有写文字了</h5>
+        <h5>我没有图文啊</h5>
+        <h5>只有写文字了</h5>
       </div>
     </div>
     <ul class="detailShop_tab">
@@ -102,16 +86,41 @@
         <span>客服</span>
       </li>
       <li class="detailShop_tab-item">
-        <i class="detailShop_tab-item-cart"/>
-        <span>购物车</span>
+        <router-link to='cart'>
+          <i class="detailShop_tab-item-cart"/>
+          <span>购物车</span>
+        </router-link>
       </li>
-      <li class="detailShop_tab-addCart">
+      <li class="detailShop_tab-addCart" @click='isAddCart = true'>
         加入购物车
       </li>
       <li class="detailShop_tab-now">
         立即购买
       </li>
     </ul>
+    <div class="detailShop_addCart" v-show='isAddCart'>
+     <div class="detailShop_addCart-top">
+        <div class="detailShop_addCart-top-img">
+          <img :src="detialImg" alt="">
+        </div>
+        <div class="detailShop_addCart-top-detail">
+          <p class="detailShop_addCart-top-detail-money">¥{{ money }}</p>
+          <p class="detailShop_addCart-top-detail-quantity">已选择 {{ quantity }} 件</p>
+        </div>
+        <i class="detailShop_addCart-top-close" @click='close'></i>
+     </div>
+     <div class="detailShop_addCart-num">
+       <span class="detailShop_addCart-num-title">购买数量</span>
+      <div>
+        <i class="detailShop_addCart-num-subtract"    @click='subtract'>-</i>
+        <span class="detailShop_addCart-num-quantity">{{ quantity }}</span>
+        <i class="detailShop_addCart-num-add" @click='add'>+</i>
+      </div>
+     </div>
+     <div class="detailShop_addCart-commit" @click='commit'>
+       确认
+     </div>
+    </div>
   </div>
 </template>
 <script>
@@ -137,7 +146,12 @@
         soldNum:0,
         text:'',
         describe:'',
-        listImg:[]
+        listImg:[],
+        detialImg:'',
+        isAddCart: false, //购物
+        quantity: 1, //购买数量,
+        lastCart:null,
+        flag: true
       }
     },
     methods:{
@@ -179,17 +193,77 @@
            this.money = money;
            this.soldNum = soldNum;
            this.text = text;
+           this.detialImg =  completionImgUrl(detialImg.split(',')[0]);
            detialImg.split(',').forEach(item => {
                this.listImg.push({ 'url':completionImgUrl(item) });
            });
          })
         }
+      },
+      close(){
+        this.quantity = 1;
+        this.isAddCart = false;
+      },
+      subtract(){
+        if(this.quantity <=1 ){
+          this.quantity = 1;
+          this.isAddCart = false;
+        }else{
+          this.quantity -= 1;
+        }
+      },
+      add(){
+        this.quantity += 1;
+      },
+      commit(){
+        //存入storage中 图片，名字，价格, 个数
+        const userCart = {
+          text: this.text,
+          quantity: this.quantity,
+          url: this.detialImg,
+          money: this.money
+        };
+        //都存起来
+        if(sessionStorage.userCart){
+          this.lastCart = sessionStorage.userCart;
+          //有无重复的
+          let userCartArr = sessionStorage.userCart.split(';');
+          let len = userCartArr.length;
+          let count = 1;
+          let norepeatList = ''; //不重复项
+          for (let i = 0; i < len; i++) {
+            let current = JSON.parse(userCartArr[i]);
+            if(current.text == userCart.text){
+              // 重复项目
+              count = current.quantity + this.quantity;
+            }else{
+              // 不重复项目
+              norepeatList = norepeatList + JSON.stringify(current)+';';
+              count = this.quantity;
+            }
+          }
+          //循环结束
+          const newCart = {
+            text: userCart.text,
+            quantity: count,
+            url: userCart.url,
+            money: userCart.money
+          };
+          sessionStorage.setItem('userCart', norepeatList + JSON.stringify(newCart));
+          // end
+        }else{
+          sessionStorage.setItem('userCart',JSON.stringify(userCart));  
+        }
+        alert('添加成功');
+        this.quantity = 1;
+        this.isAddCart = false;
       }
     },
     watch:{
       '$route': 'fetchDate'
     },
     created(){
+      this.isAddCart = false
       window.addEventListener('scroll', this.scroll ,false);
       this.fetchDate();
     },
@@ -409,6 +483,62 @@
   &_carouse
     margin-top -50px
     height 350px
+  &_addCart
+    position fixed
+    bottom 0
+    width 100%
+    z-index 999
+    background-color #fff
+    &-top
+      display flex
+      padding-bottom 50px
+      border-bottom 1px solid #ccc
+      &-img
+        width 100px
+        height 100px
+        margin -20px 15px 0
+        border 2px solid #000
+        & img
+          width 100%
+          height 100%
+      &-detail
+        margin-top 25px
+        flex 1
+        &-money
+          margin-bottom 5px
+        &-quantity
+          color #24c789
+      &-close
+        display inline-block
+        padding 10px
+        width 20px
+        height 20px
+        margin-top 20px
+        background transparent url('../../../assets/images/close.svg') 0 0 / 20px 20px no-repeat
+    &-num
+      display flex
+      justify-content space-between
+      margin-top 50px
+      &-subtract
+        padding 3px 8px
+        color #fff
+        background-color #ccc
+        border-radius 50%
+      &-quantity
+        padding 0 20px
+      &-add
+        padding 3px 6px
+        color #fff
+        background-color #ccc
+        border-radius 50%
+        margin-right 20px
+    &-commit
+      height 50px
+      line-height 50px
+      color #fff
+      text-align center 
+      margin-top 100px
+      background-color #24c789
 </style>
 
 

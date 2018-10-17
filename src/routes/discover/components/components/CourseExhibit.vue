@@ -7,7 +7,7 @@
           <p class="courseExhibit_content-item-cover-title">{{ item.text }}</p>
           <span class="courseExhibit_content-item-cover-num">{{ item.num }}人已参加</span>
           <p class="courseExhibit_content-item-cover-level">
-            K1 
+            {{ item.level }}
             <span class="courseExhibit_content-item-cover-level-time">{{ item.time }}分钟</span>
           </p>
         </div>

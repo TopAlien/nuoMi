@@ -1,41 +1,44 @@
 <template>
   <div id="App">
-    <ul class="tab" v-if='showBottomTab'>
-      <li class="tab_item">
-        <router-link to='/sport'>
-          <i class="tab_item-icon tab_item-icon-sport" />
-          运动
-        </router-link>
-      </li>
-      <li class="tab_item">
-        <router-link to='/discover'>
-          <i class="tab_item-icon tab_item-icon-discover" />
-          发现
-        </router-link>
-      </li>
-      <li class="tab_item">
-        <router-link to='/community'>
-          <i class="tab_item-icon tab_item-icon-community" />
-          社区
-        </router-link>
-      </li>
-      <li class="tab_item">
-        <router-link to='/mine'>
-          <i class="tab_item-icon tab_item-icon-mine" />
-          我
-        </router-link>
-      </li>
-    </ul>
-    <div class="backToTop" @click.stop="backToTop" v-show='isBackToTop'/>
-    <div class="wrapper" v-if='showBottomTab'>
-      <keep-alive>
-        <router-view />
-      </keep-alive>
-    </div>
-    <div v-else>   
-      <keep-alive>
-        <router-view /> 
-      </keep-alive>   
+    <Loading v-if='!isLoading'/>
+    <div v-else>
+      <ul class="tab" v-if='showBottomTab'>
+        <li class="tab_item">
+          <router-link to='/sport'>
+            <i class="tab_item-icon tab_item-icon-sport" />
+            运动
+          </router-link>
+        </li>
+        <li class="tab_item">
+          <router-link to='/discover'>
+            <i class="tab_item-icon tab_item-icon-discover" />
+            发现
+          </router-link>
+        </li>
+        <li class="tab_item">
+          <router-link to='/community'>
+            <i class="tab_item-icon tab_item-icon-community" />
+            社区
+          </router-link>
+        </li>
+        <li class="tab_item">
+          <router-link to='/mine'>
+            <i class="tab_item-icon tab_item-icon-mine" />
+            我
+          </router-link>
+        </li>
+      </ul>
+      <div class="backToTop" @click.stop="backToTop" v-show='isBackToTop'/>
+      <div class="wrapper" v-if='showBottomTab'>
+        <keep-alive>
+          <router-view />
+        </keep-alive>
+      </div>
+      <div v-else> 
+        <keep-alive>
+          <router-view /> 
+        </keep-alive>   
+      </div>
     </div>
   </div>
 </template>
@@ -43,8 +46,13 @@
 <script>
 import jwt_decode from 'jwt-decode'
 import { isEmpty } from './utils/utils'
+import Loading from './components/Loading'
+
 export default {
   name: 'App',
+  components:{
+    Loading
+  },
   computed:{
     showBottomTab(){
       const show = this.$route.name === 'sport' || this.$route.name === 'discover' || this.$route.name === 'community' || this.$route.name === 'mine';
@@ -54,7 +62,8 @@ export default {
   data(){
     return{
       isBackToTop:false,
-      timer: null
+      timer: null,
+      isLoading: false
     }
   },
   methods:{
@@ -83,13 +92,16 @@ export default {
       }
     }
   },
-  mounted(){
-    window.addEventListener('scroll',this.scrollTop,false);
-  },
   beforeDestroy(){
     window.removeEventListener('scroll',this.scrollTop,false);
+    this.timer = null;
   },
   created(){
+     window.addEventListener('scroll',this.scrollTop,false);
+      this.timer = null;
+      this.timer = setTimeout(()=>{
+        this.isLoading = true;
+      },300);
     if(localStorage.jwtToken){
        const decode = jwt_decode(localStorage.jwtToken);  //解析token
        //过期 时间
