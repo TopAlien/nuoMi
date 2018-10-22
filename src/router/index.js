@@ -1,217 +1,180 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Sport from '@/routes/sport/Sport'
-import TrainCourse from '@/routes/sport/tabContent/children/TrainCourse'
-import AllCourse from '@/routes/discover/components/AllCourse'
-import Challen from '@/routes/discover/components/Challen'
-import Diet from '@/routes/discover/components/Diet'
-import MyData from '@/routes/sport/tabContent/children/MyData'
-import Train from '@/routes/sport/tabContent/children/Train'
-import Library from '@/routes/sport/tabContent/children/Library'
-import LibraryWrap from '@/routes/sport/tabContent/children/components/LibraryWrap'
-
-import Discover from '@/routes/discover/Discover'
-import Community from '@/routes/community/Community'
-import Mine from '@/routes/mine/Mine'
-import Login from '@/routes/components/Login'
-import Register from '@/routes/components/Register'
-import Search from '@/routes/components/Search'
-import Camera from '@/routes/community/children/Camera'
-import Scan from '@/routes/mine/children/Scan'
-import Info from '@/routes/mine/children/Info'
-import Setting from '@/routes/mine/children/Setting'
-import Personal from '@/routes/mine/children/children/Personal'
-import Data from '@/routes/mine/children/children/Data' //个人资料
-import Fans from '@/routes/mine/children/children/children/Fans'
-import Trend from '@/routes/mine/children/children/children/Trend'
-import Follow from '@/routes/mine/children/children/children/Follow'
-import Trained from '@/routes/mine/children/children/children/Trained'
-import Badge from '@/routes/mine/children/children/children/Badge'
-import Publish from '@/routes/mine/children/children/children/Publish' 
-import Grade from '@/routes/mine/children/children/children/Grade'
-import Account from '@/routes/mine/children/children/Account'
-
-//shopp
-import Shopp from '@/routes/shoppMall/Shopp'
-import Cart from '@/routes/shoppMall/children/Cart'
-import DetailShop from '@/routes/shoppMall/children/DetailShop'
-import Member from '@/routes/shoppMall/children/Member'
 
 Vue.use(Router)
 
 const routes = [
-  //哎 用子路由吧 ---  因为子tab瀑布流刷新不好使
     { path: '/', redirect:'/sport' }, //主页为 ---- sport
     {
       path:'/sport',
       name: 'sport',
-      component: Sport
+      component: resolve=> require(['@/routes/sport/Sport'],resolve)
     },
     {
       path:'/trainCourse',
       name:'trainCourse',
-      component: TrainCourse
+      component: resolve=> require(['@/routes/sport/tabContent/children/TrainCourse'],resolve)
     },
     {
       path:'/allCourse',
       name:'allCourse',
-      component: AllCourse
+      component: resolve=> require(['@/routes/discover/components/AllCourse'],resolve)
     },
     {
       path:'/challen',
       name:'challen',
-      component: Challen
+      component: resolve=> require(['@/routes/discover/components/Challen'],resolve)
     },
     {
       path:'/diet',
       name:'diet',
-      component: Diet
+      component: resolve=> require(['@/routes/discover/components/Diet'],resolve)
     },
     {
       path:'/myData',
       name:'myData',
-      component: MyData
+      component: resolve=> require(['@/routes/sport/tabContent/children/MyData'],resolve)
     },
     {
       path:'/train',
       name:'train',
-      component: Train
+      component: resolve=> require(['@/routes/sport/tabContent/children/Train'],resolve)
     },
     {
       path:'/library',
       name:'library',
-      component: Library
+      component: resolve=> require(['@/routes/sport/tabContent/children/Library'],resolve)
     },
     {
       path:'/libraryWrap',
       name:'libraryWrap',
-      component: LibraryWrap,
+      component: resolve=> require(['@/routes/sport/tabContent/children/components/LibraryWrap'],resolve)
       // props: (route) => ({ query: route.query.data })
     },
     {
       path: '/discover',
       name: 'discover',
-      component: Discover
+      component: resolve=> require(['@/routes/discover/Discover'],resolve)
     },
     {
       path: '/community',
       name: 'community',
-      component: Community
+      component: resolve=> require(['@/routes/community/Community'],resolve)
     },
     {
       path: '/mine',
       name: 'mine',
-      component: Mine
+      component: resolve=> require(['@/routes/mine/Mine'],resolve)
     },
     {
       path:'/grade',
       name:'grade',
-      component: Grade
+      component: resolve=> require(['@/routes/mine/children/children/children/Grade'],resolve)
     },
     // topBar url
     {
       path: '/search',
       name: 'search',
-      component: Search
+      component: resolve=> require(['@/routes/components/Search'],resolve)
     },
     {
       path: '/camera',
       name: 'camera',
-      component: Camera
+      component: resolve=> require(['@/routes/community/children/Camera'],resolve)
     },
     {
       path: '/scan',
       name: 'scan',
-      component: Scan
+      component: resolve=> require(['@/routes/mine/children/Scan'],resolve)
     },
     {
       path: '/info',
       name: 'info',
-      component: Info
+      component: resolve=> require(['@/routes/mine/children/Info'],resolve)
     },
     // topBar url END
     //登录
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: resolve=> require(['@/routes/components/Login'],resolve)
     },
     //注册
     {
       path: '/register',
       name: 'register',
-      component: Register
+      component: resolve=> require(['@/routes/components/Register'],resolve)
     },
     // setting route ---
     {
       path: '/setting',
       name: 'setting',
-      component: Setting
+      component: resolve=> require(['@/routes/mine/children/Setting'],resolve)
     },
     {
       path: '/personal',
       name:'personal',
-      component: Personal
+      component: resolve=> require(['@/routes/mine/children/children/Personal'],resolve)
     },
     {
       path: '/data',
       name: 'data',
-      component: Data
+      component: resolve=> require(['@/routes/mine/children/children/Data'],resolve)
     },
     {
       path: '/fans',
       name: 'fans',
-      component: Fans
+      component: resolve=> require(['@/routes/mine/children/children/children/Fans'],resolve)
     },
     {
       path: '/follow',
       name: 'follow',
-      component: Follow
+      component: resolve=> require(['@/routes/mine/children/children/children/Follow'],resolve)
     },
     {
       path: '/trend',
       name: 'trend',
-      component: Trend
+      component: resolve=> require(['@/routes/mine/children/children/children/Trend'],resolve)
     },
     {
       path:'/trained',
       name:'trained',
-      component: Trained
+      component: resolve=> require(['@/routes/mine/children/children/children/Trained'],resolve)
     },
     {
       path:'/publish',
       name:'publish',
-      component: Publish
+      component: resolve=> require(['@/routes/mine/children/children/children/Publish'],resolve)
     },
     {
       path:'/badge',
       name:'badge',
-      component: Badge
+      component: resolve=> require(['@/routes/mine/children/children/children/Badge'],resolve)
     },
     {
       path: '/account',
       name: 'account',
-      component: Account
+      component: resolve=> require(['@/routes/mine/children/children/Account'],resolve)
     },
     {
       path: '/shopp',
       name: 'shopp',
-      component: Shopp
+      component: resolve=> require(['@/routes/shoppMall/Shopp'],resolve)
     },
     {
       path:'/cart',
       name:'cart',
-      component: Cart
+      component: resolve=> require(['@/routes/shoppMall/children/Cart'],resolve)
     },
     {
       path:'/detailShop',
       name:'detailShop',
-      component: DetailShop
+      component: resolve=> require(['@/routes/shoppMall/children/DetailShop'],resolve)
     },
     {
       path:'/member',
       name:'member',
-      component: Member
+      component: resolve=> require(['@/routes/shoppMall/children/Member'],resolve)
     },
     {
       path: '*',   // 错误路由

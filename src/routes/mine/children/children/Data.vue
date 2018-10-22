@@ -75,11 +75,13 @@
     computed:{
       sexIcon(){
         return this.user.sex === '男' ? 'personalData_userData-name-male' : 'personalData_userData-name-female'
+      },
+      completionImgUrl(){
+        return completionImgUrl
+      },
+      user(){
+        return this.$store.getters.user
       }
-    },
-    created(){
-      this.completionImgUrl = completionImgUrl;
-      this.user = this.$store.getters.user;
     }
   }
 </script>

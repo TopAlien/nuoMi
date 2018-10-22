@@ -88,10 +88,17 @@
       TopBar,
       LineLink
     },
+    computed:{
+      //用户信息
+      user(){
+        return this.$store.getters.user;
+      },
+      completionImgUrl(){
+        return completionImgUrl;
+      }
+    },
     data () {
       return {
-        user:{}, //用户信息
-        completionImgUrl:null,
         optionsHead:{
           title:'我',
           scan:'scan', //路径组件内置了
@@ -135,10 +142,6 @@
           }
         ]
       }
-    },
-    created(){
-      this.completionImgUrl = completionImgUrl
-      this.user = this.$store.getters.user
     }
   }
 </script>

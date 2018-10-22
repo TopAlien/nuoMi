@@ -54,9 +54,15 @@
     },
     data(){
       return{
-        user:{},
-        completionImgUrl:null,
         title:'我的 nuoMi 等级'
+      }
+    },
+    computed:{
+      user(){
+        return this.$store.getters.user
+      },
+      completionImgUrl(){
+        return completionImgUrl
       }
     },
     methods:{
@@ -66,10 +72,6 @@
       },
       touchEnd(){
       }
-    },
-    created(){
-      this.completionImgUrl = completionImgUrl;
-      this.user = this.$store.getters.user
     }
   }
 </script>

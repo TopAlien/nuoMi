@@ -39,13 +39,19 @@
     },
     data(){
       return{
-        completionImgUrl:null,
-        user:{}, //用户信息
         userName:'',
         userSex:'',
         userBirth:'',
         userCity:'',
         title:'个人资料'
+      }
+    },
+    computed:{
+      user(){
+        return this.$store.getters.user
+      },
+      completionImgUrl(){
+        return completionImgUrl
       }
     },
     methods:{
@@ -150,10 +156,6 @@
           })
         }
       }
-    },
-    created(){
-    this.completionImgUrl = completionImgUrl;
-     this.user = this.$store.getters.user
     }
   }
 </script>

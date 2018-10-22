@@ -28,7 +28,6 @@
     data(){
       return{
         title:'账号管和绑定',
-        user:{}, //用户信息
         thirdata:[
           {
             id: 0,
@@ -53,6 +52,11 @@
         ]
       }
     },
+    computed:{
+      user(){
+        return this.$store.getters.user
+      }
+    },
     methods:{
       logOut(){
         //删除token
@@ -62,9 +66,6 @@
         this.$store.dispatch("setUser",{});
         this.$router.push('/login');
       }
-    },
-    created(){
-     this.user = this.$store.getters.user
     }
   }
 </script>

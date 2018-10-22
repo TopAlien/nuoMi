@@ -79,7 +79,7 @@ export default {
           }else{
             document.body.scrollTop = document.documentElement.scrollTop = 0;
             cancelAnimationFrame(_self.timer);
-          }    
+          }  
       });
     },
     scrollTop(e){

@@ -19,7 +19,6 @@
     name:'publish', //发布
     data(){
       return{
-        user:{},
         publishValue:'' //text内容
       }
     },
@@ -35,13 +34,13 @@
       }
     },
     computed:{
+      user(){
+        return this.$store.getters.user
+      },
       //发布的颜色
       colorStyle(){
         return isEmpty(this.publishValue) ? "color:#ccc" : "color:#24c789"
       }
-    },
-    created(){
-      this.user = this.$store.getters.user
     },
     beforeRouteLeave (to, from , next) {
       const answer = window.confirm('你还没有发布,确定不发布了吗?')

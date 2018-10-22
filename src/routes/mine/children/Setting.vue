@@ -31,9 +31,16 @@
       GoBack,
       LineLink
     },
+    computed:{
+      users(){
+        return this.$store.getters.user
+      },
+      completionImgUrl(){
+        return completionImgUrl
+      }
+    },
     data(){
       return{
-        users:{}, //用户信息
         title: '设置',
         user:{
           title: '个人资料',
@@ -118,10 +125,6 @@
           }
         ]
       }
-    },
-    created(){
-      this.completionImgUrl = completionImgUrl;
-      this.users = this.$store.getters.user
     }
   }
 </script>
